@@ -3,11 +3,14 @@ const bcrypt = require ("bcrypt");
 module.exports ={
     registerUser: function (req, res){
         const {username, password, email, firstName, lastName, isGuide} = req.body
+        console.log(username)
         const db = req.app.get("db");
+        
         db.checkForTakenUsernameOrEmail(username, email).then(count => {
             if(+count[0].count === 0) {
-                bcrypt.hash(password, 12).then(hash => {
-                    db.registerUser(firstName, lastName, isGuide, username, hash).then(() => {
+                const salt = bcrypt.genSaltSync(12)
+                bcrypt.hash(password, salt).then(hash => {
+                    db.registerUsers(firstName, lastName, email, isGuide, username, hash).then(() => {
                         req.session.user ={
                             username,
                             firstName,
@@ -19,7 +22,7 @@ module.exports ={
                     })
                 })
             } else {
-                res.status(409),json({
+                res.status(409).json({
                     error: "The username or email already exists with Tokyo Tours. Please log in with your account"
                 })
             }
@@ -28,7 +31,7 @@ module.exports ={
     loginUser: function (req, res) {
         const {username, password} = req.body;
         const db = req.app.get("db");
-        db.getPasswordFromUsername(username).then(user => {
+        db.getPassword(username).then(user => {
             let hash = user[0].password;
             console.log(user[0]);
             bcrypt.compare(password, hash).then(areSame => {
@@ -38,7 +41,8 @@ module.exports ={
                         firstName: user[0].first_name,
                         lastName: user[0].last_name,
                         email: user[0].email,
-                        isGuide: user[0].is_guide
+                        isGuide: user[0].is_guide,
+                        
                     }
                     res.status(200).json(req.session.user);
                 } else {

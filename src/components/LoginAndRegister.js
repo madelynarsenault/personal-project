@@ -15,7 +15,7 @@ class LoginAndRegister extends React.Component {
                 lastName: "",
                 isGuide: null,
                 clickedRegister: false,
-                triedToClick: false,
+                click: false,
                 shouldRedirect: false,
                 errorMessage: ""
           }
@@ -28,30 +28,38 @@ class LoginAndRegister extends React.Component {
      }
      handleRegisterClick =  ()=> {
          const {username, password, email, firstName, lastName, isGuide} = this.state;
+         
+
          if(username !== "" && password !== "" && email !=="" && firstName !=="" && lastName !=="" && isGuide !== null){
+             console.log("fired1")
              axios.post("/auth/register", {
                  username, password, email, firstName, lastName, isGuide
-             }).then(response => {
+             })
+             .then(response => {
+                console.log("fired3")
                  this.props.updateUser({username, email, firstName, lastName, isGuide});
                  this.setState({shouldRedirect: true});
              }).catch(error => {
+                console.log("fired4")
                  this.setState({errorMessage: error.response.data.error})
              })
          } else {
-             this.setState({triedToClick: true})
+             console.log("fired2")
+             this.setState({click: true})
          }
+
      }
      handleLoginClick = e => {
          const {username, password} =this.state;
          if(username === "" && password ===""){
-             this.setState({triedToClick: true})
+             this.setState({click: true})
          } else {
              axios.post('/auth/login', {
                  username, password
              }).then(response => {
                  console.log(response.data.isGuide);
                  this.props.updateUser(response.data);
-                 this.setState({shouldRedirect: true, isEmployer: response.data.isEmployer})
+                 this.setState({shouldRedirect: true, isGuide: response.data.isGuide})
              }).catch(err => {
                  this.setState({errorMessage: err.response.data.error});
              })
@@ -63,18 +71,19 @@ class LoginAndRegister extends React.Component {
         if (this.state.shouldRedirect === true && this.state.isGuide === false){
             return <Redirect to="/user" />
         } else if (this.state.shouldRedirect === true && this.state.isGuide === true){
-            return <Redirect to="/employer" />
+            return <Redirect to="/guide" />
         }
         return(
             <>
             <div>
-                {this.state.triedToClick === true ? <h1>Fill out all the required fields</h1> : null}
+                {this.state.click === true ? <h1>Fill out all the required fields</h1> : null}
                 {this.state.errorMessage !== "" ? <h1>{this.state.errorMessage}</h1> : null}
                 <input placeholder="Username"
                 name="username"
                 onChange={this.handleChange} />
                 <input placeholder="Password" 
                 type="password"
+                name="password"
                 onChange={this.handleChange} />
             </div>
             <button onClick={this.handleLoginClick}>Login</button>
@@ -85,10 +94,10 @@ class LoginAndRegister extends React.Component {
                     this.state.clickedRegister === true ?
                 <>
             <input placeholder="First Name"
-            name="firstname"
+            name="firstName"
             onChange={this.handleChange} />
             <input placeholder="Last Name"
-            name="lastname"
+            name="lastName"
             onChange={this.handleChange} />
             <input placeholder="Email" 
             name="email"
