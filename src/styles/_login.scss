@@ -1,0 +1,15 @@
+
+
+
+
+.signUp {
+    height: 60px;
+    width:70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $primaryButton;
+    &:hover{
+        background: rgb(202, 202, 224);
+    }
+    } 

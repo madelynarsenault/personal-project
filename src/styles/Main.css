@@ -1,0 +1,73 @@
+.signUp {
+  height: 60px;
+  width: 70px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #7ecfe1;
+}
+
+.signUp:hover {
+  background: #cacae0;
+}
+
+.findButton {
+  background-color: #0d856f;
+  padding: 16px 50px;
+  border-radius: 12px;
+  border-color: transparent;
+  font-size: 3ch;
+  font-family: 'Abril Fatface', cursive;
+  color: white;
+}
+
+.findButton:hover {
+  background: #107b52;
+}
+
+.Home {
+  background-image: url("https://images.unsplash.com/photo-1562716768-992889d14a58?ixlib=rb-1.2.1&auto=format&fit=crop&w=1051&q=80");
+  background-repeat: no-repeat;
+  background-size: 100vw 100vh;
+  height: 100vh;
+}
+
+.welcome {
+  font-family: 'Darker Grotesque', sans-serif;
+  font-size: 7rem;
+  color: white;
+  margin-top: 15vw;
+}
+
+.tokyo {
+  font-family: 'Alfa Slab One', cursive;
+  font-size: 9rem;
+  color: white;
+  margin-top: 10px;
+}
+
+.titles {
+  position: static;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  /* height: 100vh; */
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  /* margin-top: 40px; */
+}
+/*# sourceMappingURL=Main.css.map */

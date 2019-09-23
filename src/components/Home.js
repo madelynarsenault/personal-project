@@ -1,18 +1,20 @@
 import React from "react";
+import {Link} from "react-router-dom"
 
 function Home(props) {
     return (
-        <>
+        <main className ="Home">
         <div>
         <div className="titles">
             <h2 className="welcome">Welcome To</h2>
             <h1 className="tokyo">Tokyo Tours</h1>
-            <button className="find">Find a tour</button>
+            <Link to="/login">
+            <button className="findButton">
+                    Get Started</button>
+                    </Link>
         </div>
-            <div className="findDiv">
-            </div>
         </div>
-        </>
+        </main>
     )
 }
 

@@ -115,7 +115,7 @@ class LoginAndRegister extends React.Component {
                 onClick={() => this.setState({isGuide: false})}/>
                 <h6>Tourist</h6>
             </div>
-            <button onClick={this.handleRegisterClick}>Sign Up</button>
+            <button className="signUp" onClick={this.handleRegisterClick}>Sign Up</button>
             </>
             : null
           }
