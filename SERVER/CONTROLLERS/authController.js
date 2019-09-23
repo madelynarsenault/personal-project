@@ -42,6 +42,7 @@ module.exports ={
                         lastName: user[0].last_name,
                         email: user[0].email,
                         isGuide: user[0].is_guide,
+                    
                         
                     }
                     res.status(200).json(req.session.user);

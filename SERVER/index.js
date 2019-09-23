@@ -4,6 +4,7 @@ const massive = require('massive');
 const session = require('express-session');
 
 const {registerUser, loginUser} = require("./CONTROLLERS/authController");
+const {addTour, fetchPastTours, getAllTours, editTour} = require("./CONTROLLERS/tourController");
 
 const app = express();
 
@@ -28,5 +29,12 @@ app.post("/auth/login", loginUser)
 app.get("/auth/user", (req, res) => {
     res.status(200).json(req.session.user);
 })
+
+app.post('/api/post', addTour)
+app.get('/api/guide/posts', fetchPastTours)
+app.get("/api/posts", getAllTours)
+app.put("/api/post/:id", editTour)
+
+
 
 app.listen(5050, () => console.log(`listening on port 5050`));

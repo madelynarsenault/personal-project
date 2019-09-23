@@ -4,6 +4,9 @@ import {Link} from "react-router-dom"
 function Home(props) {
     return (
         <main className ="Home">
+            <div>
+                
+                </div>
         <div>
         <div className="titles">
             <h2 className="welcome">Welcome To</h2>
