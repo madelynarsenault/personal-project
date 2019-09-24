@@ -4,8 +4,8 @@ function addTour(req, res) {
     console.log(req.session.user)
     db.getUsernameId(req.session.user.username).then(id => {
         let userID = id[0].id
-        db.addTour(userID, postComment, postTitle, picture1, picture2, picture3).then(() => {
-            res.sendStatus(200)
+        db.addTour(postComment, postTitle, picture1, picture2, picture3).then((response) => {
+            res.sendStatus(200).json(response)
         })
     })
 }
@@ -13,7 +13,7 @@ function addTour(req, res) {
 function fetchPastTours(req,res){
     const db = req.app.get("db");
     db.fetchPastTours(req.session.user.username).then(tours => {
-        console.log('tc16:hit')
+        console.log('tc16:', tours)
         res.status(200).json(tours)
     })
 }

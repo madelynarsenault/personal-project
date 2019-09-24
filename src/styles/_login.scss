@@ -1,5 +1,48 @@
+@mixin flexDesign {
+    height:40px;
+    width:46vw;
+}
+
+@mixin fontSize {
+    font-size: 4ch;
+}
+
+@mixin roundBorder {
+    border-radius: 50px 15px;
+}
 
 
+.login{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    // border-color:black;
+    // border-width: 4px;
+    width: 100vw;
+    height:100vh;
+    border-style: solid;
+    // margin-left:30vw;
+    // margin-top:10vh;
+    background-image: url('https://image.freepik.com/free-vector/flying-elegant-white-japanese-crane_53876-16871.jpg');
+    background-repeat:no-repeat;
+    background-size: 100vw 100vh
+}
+
+.username{
+    @include flexDesign();
+    @include fontSize();
+    display: flex;
+    flex-direction:column;
+    margin-bottom: 50px;
+    @include roundBorder();
+}
+
+.password{
+    @include flexDesign();
+    @include fontSize();
+    @include roundBorder();
+}
 
 
 .signUp {

@@ -75,15 +75,20 @@ class LoginAndRegister extends React.Component {
         }
         return(
             <>
+            <div className="login">
+
             <div>
                 {this.state.click === true ? <h1>Fill out all the required fields</h1> : null}
                 {this.state.errorMessage !== "" ? <h1>{this.state.errorMessage}</h1> : null}
                 <input placeholder="Username"
                 name="username"
-                onChange={this.handleChange} />
+                className="username"
+                onChange={this.handleChange}
+                />
                 <input placeholder="Password" 
                 type="password"
                 name="password"
+                className="password"
                 onChange={this.handleChange} />
             </div>
             <button onClick={this.handleLoginClick}>Login</button>
@@ -92,7 +97,7 @@ class LoginAndRegister extends React.Component {
                 </button>
                 {
                     this.state.clickedRegister === true ?
-                <>
+                    <>
             <input placeholder="First Name"
             name="firstName"
             onChange={this.handleChange} />
@@ -118,7 +123,8 @@ class LoginAndRegister extends React.Component {
             <button className="signUp" onClick={this.handleRegisterClick}>Sign Up</button>
             </>
             : null
-          }
+        }
+        </div>
             </>
         )
     }

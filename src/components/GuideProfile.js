@@ -22,7 +22,8 @@ class GuideProfile extends React.Component {
     }
 
     grabPosts = () => {
-        axios.get("/api/guide/posts").then(response => {
+        console.log('grabbed', this.state.previousTours)
+         return axios.get("/api/guide/posts").then(response => {
             this.setState({previousTours: response.data})
         })
     }
@@ -36,6 +37,7 @@ class GuideProfile extends React.Component {
     }
 
     render(){
+        console.log(this.state.previousTours)
     return (
         <>
         <h1>Create a Tour</h1>
