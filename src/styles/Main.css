@@ -15,14 +15,12 @@
   width: 100vw;
   height: 100vh;
   border-style: solid;
-  background-image: url("https://image.freepik.com/free-vector/flying-elegant-white-japanese-crane_53876-16871.jpg");
-  background-repeat: no-repeat;
   background-size: 100vw 100vh;
 }
 
 .username {
   height: 40px;
-  width: 46vw;
+  width: 33vw;
   font-size: 4ch;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -32,14 +30,42 @@
       -ms-flex-direction: column;
           flex-direction: column;
   margin-bottom: 50px;
-  border-radius: 50px 15px;
+  border-radius: 15px 40px;
+  font-family: 'Amiri', serif;
+  background: transparent;
 }
 
 .password {
   height: 40px;
-  width: 46vw;
+  width: 33vw;
   font-size: 4ch;
-  border-radius: 50px 15px;
+  border-radius: 15px 40px;
+  font-family: 'Amiri', serif;
+  background: transparent;
+}
+
+.loginButton {
+  margin-top: 20px;
+  border-radius: 20px 20px;
+  height: 5vh;
+  width: 11vw;
+  background: #83c698;
+}
+
+.loginButton:hover {
+  background: #f5f590;
+}
+
+.registerButton {
+  margin-top: 20px;
+  border-radius: 20px 20px;
+  height: 5vh;
+  width: 11vw;
+  background: #83c698;
+}
+
+.registerButton:hover {
+  background: #f5f590;
 }
 
 .signUp {

@@ -1,6 +1,8 @@
 import React from "react";
 import axios from 'axios';
 import Post from "./Post";
+import { connect } from "react-redux";
+
 
 class GuideProfile extends React.Component {
     constructor(){
@@ -29,9 +31,14 @@ class GuideProfile extends React.Component {
     }
 
     handleClick = e => {
+        console.log(this.props.reducer)
         axios.post("/api/post", {
             postTitle: this.state.postTitle,
-            postComment: this.state.postComment
+            postComment: this.state.postComment,
+            picture1: "hi",
+            picture2: "hello",
+            picture3: "howdy",
+            userId: this.props.reducer.id
         })
         this.grabPosts();
     }
@@ -64,5 +71,13 @@ class GuideProfile extends React.Component {
   }
 }
 
+function mapStateToProps(reduxState){
+    console.log(reduxState)
+    return{
+       reducer: reduxState.user
+    }
 
-export default GuideProfile;
+}
+
+
+export default connect(mapStateToProps)(GuideProfile);

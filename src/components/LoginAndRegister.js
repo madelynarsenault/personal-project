@@ -91,8 +91,8 @@ class LoginAndRegister extends React.Component {
                 className="password"
                 onChange={this.handleChange} />
             </div>
-            <button onClick={this.handleLoginClick}>Login</button>
-            <button onClick={() => this.setState({clickedRegister: !this.state.clickedRegister})}>
+            <button className ="loginButton"onClick={this.handleLoginClick}>Login</button>
+            <button className="registerButton"onClick={() => this.setState({clickedRegister: !this.state.clickedRegister})}>
                 {this.state.clickedRegister === true ? "Cancel" : "Register"}
                 </button>
                 {

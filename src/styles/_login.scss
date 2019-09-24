@@ -1,6 +1,9 @@
 @mixin flexDesign {
     height:40px;
-    width:46vw;
+    width:33vw;
+}
+@mixin fontStyle {
+    font-family: 'Amiri', serif;
 }
 
 @mixin fontSize {
@@ -8,10 +11,25 @@
 }
 
 @mixin roundBorder {
-    border-radius: 50px 15px;
+    border-radius: 15px 40px;
+}
+@mixin roundButton {
+    border-radius: 20px 20px
+}
+@mixin buttonSize {
+    height:5vh;
+    width: 11vw;
+}
+@mixin buttonHover {
+    background:rgb(131, 198, 152);
+    &:hover {
+        background:rgb(245, 245, 144)
+    }
 }
 
-
+body{
+    // background-image: url('/src/styles/iPiccy-image.png');
+}
 .login{
     display: flex;
     flex-direction: column;
@@ -24,8 +42,7 @@
     border-style: solid;
     // margin-left:30vw;
     // margin-top:10vh;
-    background-image: url('https://image.freepik.com/free-vector/flying-elegant-white-japanese-crane_53876-16871.jpg');
-    background-repeat:no-repeat;
+    // background-repeat:no-repeat;
     background-size: 100vw 100vh
 }
 
@@ -36,13 +53,36 @@
     flex-direction:column;
     margin-bottom: 50px;
     @include roundBorder();
+    @include fontStyle();
+    background:transparent;
 }
 
 .password{
     @include flexDesign();
     @include fontSize();
     @include roundBorder();
+    @include fontStyle();
+    background: transparent;
+    
 }
+
+.loginButton{
+    margin-top:20px;
+    @include roundButton();
+    @include buttonSize();
+    @include buttonHover();
+}
+
+.registerButton{
+    margin-top: 20px;
+    @include roundButton();
+    @include buttonSize();
+    @include buttonHover();
+}
+
+
+
+
 
 
 .signUp {

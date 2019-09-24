@@ -33,7 +33,6 @@ module.exports ={
         const db = req.app.get("db");
         db.getPassword(username).then(user => {
             let hash = user[0].password;
-            console.log(user[0]);
             bcrypt.compare(password, hash).then(areSame => {
                 if(areSame){
                     req.session.user ={
@@ -42,7 +41,7 @@ module.exports ={
                         lastName: user[0].last_name,
                         email: user[0].email,
                         isGuide: user[0].is_guide,
-                        id: user[0].id
+                        id: user[0].user_id
                         
                     }
                     res.status(200).json(req.session.user);

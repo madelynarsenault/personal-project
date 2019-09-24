@@ -7,14 +7,20 @@ class Post extends React.Component{
         this.state ={
             editStatus: false,
             textField: "",
-            textArea: ""
+            textArea: "",
+            picture1: "",
+            picture2: "",
+            picture3: ""
         }
     }
     handleClick = e => {
         this.setState({editStatus: false});
         axios.put(`/api/post/${this.props.id}`, {
             comment: this.state.textArea,
-            title: this.state.textField
+            title: this.state.textField,
+            pic1: this.state.picture1,
+            pic2: this.state.picture2,
+            pic3: this.state.picture3
         }).then(response => {
             this.props.updateTours(response.data)
         })
@@ -32,13 +38,16 @@ class Post extends React.Component{
                     <>
                     <h1>{this.props.postTitle}</h1>
                     <h2>{this.props.postComment}</h2>
+                    <h2>{this.props.picture1}</h2>
+                    <h2>{this.props.picture2}</h2>
+                    <h3>{this.props.picture3}</h3>
                     </>
                     :
                     <>
-                    <input defaultValue={this.props.postTitle}
-                    onChange={e => this.setState({textField: e.target.value})} />
-                    <textarea defaultValue={this.props.postComment}
-                    onChange ={(e) => this.setState({textArea: e.target.value})}>
+                    <input onChange={e => this.setState({textField: e.target.value})} 
+                    defaultValue={this.props.postTitle}/>
+                    <textarea onChange ={(e) => this.setState({textArea: e.target.value})}
+                    defaultValue={this.props.postComment}>
                     </textarea>
                     </>
                 }
