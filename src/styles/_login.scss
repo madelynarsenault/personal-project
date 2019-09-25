@@ -21,14 +21,15 @@
     width: 11vw;
 }
 @mixin buttonHover {
-    background:rgb(131, 198, 152);
+    background:rgb(233, 78, 66);
     &:hover {
-        background:rgb(245, 245, 144)
+        background:rgb(237, 237, 230)
     }
 }
 
 body{
-    // background-image: url('/src/styles/iPiccy-image.png');
+    background-image: url('./iPiccy_image.png');
+    background-repeat: no-repeat;
 }
 .login{
     display: flex;
@@ -55,6 +56,7 @@ body{
     @include roundBorder();
     @include fontStyle();
     background:transparent;
+    margin-left:90px;
 }
 
 .password{
@@ -63,6 +65,7 @@ body{
     @include roundBorder();
     @include fontStyle();
     background: transparent;
+    margin-left:90px;
     
 }
 
@@ -71,6 +74,7 @@ body{
     @include roundButton();
     @include buttonSize();
     @include buttonHover();
+    margin-left:90px
 }
 
 .registerButton{
@@ -78,6 +82,7 @@ body{
     @include roundButton();
     @include buttonSize();
     @include buttonHover();
+    margin-left:90px;
 }
 
 
@@ -96,3 +101,18 @@ body{
         background: rgb(202, 202, 224);
     }
     } 
+
+    .loginHeader{
+        height:40px;
+        display:flex;
+        justify-content: space-between;
+        font-size:5ch;
+        font-family: 'Baloo', cursive;
+    }
+    .kanji{
+        margin-top:12px;
+    }
+
+    .tok{
+        margin-top:9px;
+    }

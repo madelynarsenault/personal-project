@@ -5,9 +5,9 @@ function addTour(req, res) {
     console.log("tc:5", req.session.user)
     db.getUsernameId(req.session.user.username).then(id => {
         let user_id = id[0].id
-        console.log("tc7:")
-        db.addTour(postComment, postTitle, picture1, picture2, picture3, user_id).then(() => {
-            res.sendStatus(200)
+        console.log(user_id)
+        db.addTour(postComment, postTitle, picture1, picture2, picture3, user_id).then((response) => {
+            res.status(200).json(response)
         })
     })
 }

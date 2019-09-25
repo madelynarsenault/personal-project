@@ -32,7 +32,8 @@ class Post extends React.Component{
     }
     render(){
         return (
-            <div>
+            <div className="posts"> 
+            
                 {
                     this.state.editStatus === false ?
                     <>

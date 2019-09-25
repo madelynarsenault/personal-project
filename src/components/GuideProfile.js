@@ -35,9 +35,9 @@ class GuideProfile extends React.Component {
         axios.post("/api/post", {
             postTitle: this.state.postTitle,
             postComment: this.state.postComment,
-            picture1: "hi",
-            picture2: "hello",
-            picture3: "howdy",
+            picture1: this.state.picture1,
+            picture2: this.state.picture2,
+            picture3: this.state.picture3,
             userId: this.props.reducer.id
         })
         this.grabPosts();
@@ -47,18 +47,27 @@ class GuideProfile extends React.Component {
         console.log(this.state.previousTours)
     return (
         <>
+        <div className="guideHeader"></div>
+            <div className="createTour">
         <h1>Create a Tour</h1>
         <input placeholder="Tour Title"
         onChange={e => this.setState({postTitle: e.target.value})} />
         <textarea
         onChange={e => this.setState({postComment: e.target.value})}></textarea>
+        <input placeholder="Image"
+        onChange={e => this.setState({picture1: e.target.value})} />
+        <input placeholder="Image"
+        onChange={e => this.setState({picture2: e.target.value})} />
+        <input placeholder="Image"
+        onChange={e => this.setState({picture3: e.target.value})} />
         <button onClick ={this.handleClick}>Post Tour</button>
-        <div>
+        </div>
+        <div className="postTourGuide">
         {this.state.previousTours.map(post => {
             return(
                 <>
                 <Post key={post.id} postTitle={post.title}
-                postComment={post.comment} 
+                postComment={post.info} 
                 showOnGuideProfile={true}
                 id={post.id}
                 updateTours={this.updateTours}/>

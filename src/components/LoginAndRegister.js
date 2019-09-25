@@ -75,6 +75,10 @@ class LoginAndRegister extends React.Component {
         }
         return(
             <>
+            <div className="loginHeader">
+                <h1 className="kanji">トラベル</h1>
+                <h1 className="tok">Tokyo Tours</h1>
+            </div>
             <div className="login">
 
             <div>
