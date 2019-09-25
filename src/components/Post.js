@@ -39,9 +39,9 @@ class Post extends React.Component{
                     <>
                     <h1>{this.props.postTitle}</h1>
                     <h2>{this.props.postComment}</h2>
-                    <h2>{this.props.picture1}</h2>
-                    <h2>{this.props.picture2}</h2>
-                    <h3>{this.props.picture3}</h3>
+                    <img className="picture1" src={this.props.picture1}/>
+                    <img className="picture2"src={this.props.picture2}/>
+                    <img className="picture3"src={this.props.picture3}/>
                     </>
                     :
                     <>
@@ -50,6 +50,12 @@ class Post extends React.Component{
                     <textarea onChange ={(e) => this.setState({textArea: e.target.value})}
                     defaultValue={this.props.postComment}>
                     </textarea>
+                    <input onChange={e => this.setState({picture1: e.target.value})}
+                    defaultValue={this.props.picture1}/>
+                    <input onChange={e => this.setState({picture2: e.target.value})}
+                    defaultValue={this.props.picture2} />
+                    <input onChange={e => this.setState({picture3: e.target.value})}
+                    defaultValue={this.props.picture3} />
                     </>
                 }
                 {
@@ -69,7 +75,7 @@ class Post extends React.Component{
                 </button>
                 </>
                 :
-                <button>apply</button>
+                <button>Apply Changes</button>
                 }
             </div>
         )

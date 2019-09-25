@@ -20,6 +20,7 @@ class GuideProfile extends React.Component {
         this.grabPosts();
     }
     updateTours = pastTour => {
+        console.log(pastTour)
         this.setState({previousTours: pastTour})
     }
 
@@ -39,12 +40,13 @@ class GuideProfile extends React.Component {
             picture2: this.state.picture2,
             picture3: this.state.picture3,
             userId: this.props.reducer.id
+        }).then( () => {
+            this.grabPosts();
         })
-        this.grabPosts();
+        
     }
 
     render(){
-        console.log(this.state.previousTours)
     return (
         <>
         <div className="guideHeader"></div>
@@ -68,6 +70,9 @@ class GuideProfile extends React.Component {
                 <>
                 <Post key={post.id} postTitle={post.title}
                 postComment={post.info} 
+                picture1={post.picture1}
+                picture2={post.picture2}
+                picture3={post.picture3}
                 showOnGuideProfile={true}
                 id={post.id}
                 updateTours={this.updateTours}/>

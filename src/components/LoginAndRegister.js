@@ -31,20 +31,17 @@ class LoginAndRegister extends React.Component {
          
 
          if(username !== "" && password !== "" && email !=="" && firstName !=="" && lastName !=="" && isGuide !== null){
-             console.log("fired1")
+             
              axios.post("/auth/register", {
                  username, password, email, firstName, lastName, isGuide
              })
              .then(response => {
-                console.log("fired3")
                  this.props.updateUser({username, email, firstName, lastName, isGuide});
                  this.setState({shouldRedirect: true});
              }).catch(error => {
-                console.log("fired4")
                  this.setState({errorMessage: error.response.data.error})
              })
          } else {
-             console.log("fired2")
              this.setState({click: true})
          }
 
@@ -57,7 +54,6 @@ class LoginAndRegister extends React.Component {
              axios.post('/auth/login', {
                  username, password
              }).then(response => {
-                 console.log(response.data.isGuide);
                  this.props.updateUser(response.data);
                  this.setState({shouldRedirect: true, isGuide: response.data.isGuide})
              }).catch(err => {
@@ -74,15 +70,15 @@ class LoginAndRegister extends React.Component {
             return <Redirect to="/guide" />
         }
         return(
-            <>
+            <main className="loginPage">
             <div className="loginHeader">
+                {/* <h1 className="tok">Tokyo Tours</h1> */}
                 <h1 className="kanji">トラベル</h1>
-                <h1 className="tok">Tokyo Tours</h1>
             </div>
             <div className="login">
 
             <div>
-                {this.state.click === true ? <h1>Fill out all the required fields</h1> : null}
+                {this.state.click === true ? <h1 className="fillOutFields">Please fill out all the required fields.</h1> : null}
                 {this.state.errorMessage !== "" ? <h1>{this.state.errorMessage}</h1> : null}
                 <input placeholder="Username"
                 name="username"
@@ -102,16 +98,21 @@ class LoginAndRegister extends React.Component {
                 {
                     this.state.clickedRegister === true ?
                     <>
+                    <div className="registerInput">
             <input placeholder="First Name"
             name="firstName"
+            className="firstName"
             onChange={this.handleChange} />
             <input placeholder="Last Name"
             name="lastName"
+            className="lastName"
             onChange={this.handleChange} />
             <input placeholder="Email" 
             name="email"
+            className="email"
             onChange={this.handleChange}/>
-            <div>
+            </div>
+            <div className="isGuide">
                 <input
                 type="radio"
                 value="Guide"
@@ -129,7 +130,7 @@ class LoginAndRegister extends React.Component {
             : null
         }
         </div>
-            </>
+            </main>
         )
     }
 
