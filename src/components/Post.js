@@ -6,22 +6,26 @@ class Post extends React.Component{
         super(props)
         this.state ={
             editStatus: false,
-            textField: "",
-            textArea: "",
-            picture1: "",
-            picture2: "",
-            picture3: ""
+            textField: this.props.postTitle,
+            textArea: this.props.postComment,
+            picture1: this.props.picture1,
+            picture2: this.props.picture2,
+            picture3: this.props.picture3
         }
     }
     handleClick = e => {
+        console.log(this.props)
         this.setState({editStatus: false});
         axios.put(`/api/post/${this.props.id}`, {
             comment: this.state.textArea,
             title: this.state.textField,
-            pic1: this.state.picture1,
-            pic2: this.state.picture2,
-            pic3: this.state.picture3
+            picture1: this.state.picture1,
+            picture2: this.state.picture2,
+            picture3: this.state.picture3,
+            userId: this.props.userId
+
         }).then(response => {
+            console.log(response)
             this.props.updateTours(response.data)
         })
     }
@@ -31,6 +35,7 @@ class Post extends React.Component{
         })
     }
     render(){
+        console.log(this.state.editStatus, this.props.onGuideProfile)
         return (
             <div className="posts"> 
             
@@ -75,7 +80,7 @@ class Post extends React.Component{
                 </button>
                 </>
                 :
-                <button>Apply Changes</button>
+                null
                 }
             </div>
         )

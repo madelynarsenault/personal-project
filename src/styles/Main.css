@@ -222,7 +222,7 @@
   border-width: 3px;
   border-radius: 35px 35px;
   width: 30vw;
-  height: 40vh;
+  height: 80vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -272,7 +272,13 @@
 }
 
 .picture1, .picture2, .picture3 {
-  width: 30vw;
-  height: 30vh;
+  width: 20vw;
+  height: 20vh;
+}
+
+.title, .info, .pic1, .pic2, .pic3 {
+  height: 4vh;
+  width: 20vw;
+  margin-top: 15px;
 }
 /*# sourceMappingURL=Main.css.map */

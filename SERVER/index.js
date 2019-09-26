@@ -34,6 +34,17 @@ app.post('/api/post', addTour)
 app.get('/api/guide/posts', fetchPastTours)
 app.get("/api/posts", getAllTours)
 app.put("/api/post/:id", editTour)
+// app.delete("/api/post/:id", (req, res) => {
+//     const {id} = req.params;
+//     const db = req.app.get('db');
+
+//     db.deletePost(id).then(() => {
+//         db.getPreviousTours(req.session.user.username).then(posts => {
+//             res.status(200).json(posts)
+//         })
+//     })
+// })
+
 
 
 
