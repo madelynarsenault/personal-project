@@ -5,13 +5,18 @@ import Post from "./Post";
 
 
 class TourListings extends React.Component {
-    state ={
+    constructor(){
+    super()
+    this.state ={
         posts: []
-    }
+    }}
     componentDidMount(){
         axios.get("/api/posts").then(response => {
             this.setState({posts: response.data})
         })
+    }
+    update =(posts)=> {
+        this.setState({posts: posts})
     }
     render() {
         return (
@@ -22,6 +27,7 @@ class TourListings extends React.Component {
                 key={i}
                 postTitle={val.title}
                 postComment={val.comment}
+                update={this.update}
                 onGuideProfile={false} />
             })}
             </>

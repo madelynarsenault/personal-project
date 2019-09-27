@@ -19,9 +19,14 @@ function fetchPastTours(req,res){
 
 function getAllTours(req,res){
     const db = req.app.get('db');
-    db.getTours().then(tours => {
-        res.status(200).json(tours);
-    })
+
+    try {
+        db.getTours().then(tours => {
+            res.status(200).json(tours);
+        })
+    } catch (err) {
+        console.log("NO WORKING")
+    }
 }
 
 function editTour(req, res) {
@@ -39,9 +44,20 @@ function editTour(req, res) {
     
 }
 
+function deletePost (req, res) {
+    const {id} = req.params;
+    const db = req.app.get('db');
+    db.deletePost(id).then(() => {
+        db.getPreviousTours(req.session.user.username).then(posts => {
+            res.status(200).json(posts)
+        })
+    })
+}
+
 module.exports ={
     addTour,
     fetchPastTours,
     getAllTours,
-    editTour
+    editTour,
+    deletePost
 }

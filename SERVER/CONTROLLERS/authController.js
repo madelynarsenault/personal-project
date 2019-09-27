@@ -54,5 +54,9 @@ module.exports ={
                 }
             })
         })
+    },
+            logOut: function(req,res){
+                req.session.destroy();
+                return res.sendStatus(200)
     }
 }

@@ -3,8 +3,8 @@ const express = require("express");
 const massive = require('massive');
 const session = require('express-session');
 
-const {registerUser, loginUser} = require("./CONTROLLERS/authController");
-const {addTour, fetchPastTours, getAllTours, editTour} = require("./CONTROLLERS/tourController");
+const {registerUser, loginUser, logOut} = require("./CONTROLLERS/authController");
+const {addTour, fetchPastTours, getAllTours, editTour, deletePost} = require("./CONTROLLERS/tourController");
 
 const app = express();
 
@@ -26,6 +26,7 @@ app.use(session ({
 
 app.post("/auth/register", registerUser)
 app.post("/auth/login", loginUser)
+app.get("/auth/logout", logOut)
 app.get("/auth/user", (req, res) => {
     res.status(200).json(req.session.user);
 })
@@ -34,17 +35,7 @@ app.post('/api/post', addTour)
 app.get('/api/guide/posts', fetchPastTours)
 app.get("/api/posts", getAllTours)
 app.put("/api/post/:id", editTour)
-// app.delete("/api/post/:id", (req, res) => {
-//     const {id} = req.params;
-//     const db = req.app.get('db');
-
-//     db.deletePost(id).then(() => {
-//         db.getPreviousTours(req.session.user.username).then(posts => {
-//             res.status(200).json(posts)
-//         })
-//     })
-// })
-
+app.delete("/api/post/:id", deletePost)
 
 
 

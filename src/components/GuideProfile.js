@@ -2,6 +2,8 @@ import React from "react";
 import axios from 'axios';
 import Post from "./Post";
 import { connect } from "react-redux";
+import {Redirect} from "react-router-dom";
+import {updateUser} from "../redux/userReducer"
 
 
 class GuideProfile extends React.Component {
@@ -13,7 +15,8 @@ class GuideProfile extends React.Component {
         picture1:"",
         picture2:"",
         picture3:"",
-        previousTours: []
+        previousTours: [],
+        redirect: false
     }
 }
     componentDidMount(){
@@ -41,6 +44,13 @@ class GuideProfile extends React.Component {
         }).then( () => {
             this.grabPosts();
         })
+    }
+            logout=()=> {
+                axios.get('/auth/logout').then(() => {
+                    this.props.updateUser({})
+                    this.setState({redirect: true})
+                })
+                .catch(err => console.log(err))
         
     }
 
@@ -48,6 +58,9 @@ class GuideProfile extends React.Component {
         let sortedArr = this.state.previousTours.sort((a, b) => {
             return a.id - b.id;
         });
+        if(this.state.redirect === true){
+            return <Redirect to ="/"/>
+        }
     return (
         <>
         <div className="guideHeader"></div>
@@ -68,6 +81,7 @@ class GuideProfile extends React.Component {
         className="pic3"
         onChange={e => this.setState({picture3: e.target.value})} />
         <button onClick ={this.handleClick}>Post Tour</button>
+        <button onClick={this.logout}>Logout</button>
         </div>
         <div className="postTourGuide">
         {this.state.previousTours.map(post => {
@@ -100,4 +114,6 @@ function mapStateToProps(reduxState){
 }
 
 
-export default connect(mapStateToProps)(GuideProfile);
+export default connect(mapStateToProps,{ 
+updateUser
+})(GuideProfile);
