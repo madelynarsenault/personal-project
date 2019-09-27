@@ -48,6 +48,7 @@ function deletePost (req, res) {
     const {id} = req.params;
     const db = req.app.get('db');
     db.deletePost(id).then(() => {
+        console.log(req.session.user.username)
         db.getPreviousTours(req.session.user.username).then(posts => {
             res.status(200).json(posts)
         })

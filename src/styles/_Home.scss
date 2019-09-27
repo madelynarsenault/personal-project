@@ -1,4 +1,8 @@
-$primaryText : rgb(255, 255, 255);
+$primaryText : whitesmoke;
+
+@mixin fontStyle{
+  font-family: 'M PLUS 1p', sans-serif;
+}
 
 
 .findButton{
@@ -28,6 +32,8 @@ $primaryText : rgb(255, 255, 255);
     font-size: 7rem;
     color:$primaryText;
     margin-top:15vw;
+    font-weight: bold;
+    
     
   }
   .tokyo{
@@ -46,4 +52,35 @@ $primaryText : rgb(255, 255, 255);
   /* height: 100vh; */
   justify-content: space-evenly;
     /* margin-top: 40px; */
+  }
+  .navBar{
+    background-color:rgb(30, 140, 120);
+    height:43px;
+    width:279px;
+    display:flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-left:78vw;
+    border-radius: 20px 20px;
+    position:absolute;
+    top:1vw;
+
+  }
+  .listBar{
+    color:white;
+    list-style-type: none;
+    display:flex;
+    justify-content: space-around;
+    width:20vw;
+    font-size: 2.3ch;
+    @include fontStyle();
+  }
+  .aboutLink, .loginLink, .tourLink{
+    text-decoration: none;
+    color:white;
+    cursor: pointer;
+    &:hover{
+      color: rgb(245, 245, 144);
+    }
+
   }
