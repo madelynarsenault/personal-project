@@ -38,6 +38,8 @@
 .loginPage{
     background-image: url('./iPiccy_image.png');
     background-repeat: no-repeat;
+    // filter: blur(3px);
+
 }
 .login{
     display: flex;
@@ -52,7 +54,9 @@
     // margin-left:30vw;
     // margin-top:10vh;
     // background-repeat:no-repeat;
-    background-size: 100vw 100vh
+    // background-size: 100vw 100vh;
+    // position: absolute;
+//    
 }
 
 .username{
@@ -151,4 +155,22 @@
         justify-content: space-around;
         @include fontStyle();
     }
-    
+    @media (max-width: 1099px){
+        .login{
+            background-color: rgba(255, 255, 255, 0.694)
+        }
+        .loginButton{
+            width:30vw;
+            height:5vh;
+        }
+        .registerButton{
+        width: 30vw;
+        height:5vh;
+        }
+        .username{
+            width:60vw;
+        }
+        .password{
+            width: 60vw;
+        }
+    }

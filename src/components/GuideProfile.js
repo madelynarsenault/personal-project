@@ -36,8 +36,8 @@ class GuideProfile extends React.Component {
         console.log(this.props.reducer)
         axios.post("/api/post", {
             postTitle: this.state.postTitle,
-            postComment: this.state.postComment,
             url: this.state.url,
+            postComment: this.state.postComment,
             picture2: this.state.picture2,
             picture3: this.state.picture3,
             userId: this.props.reducer.id

@@ -35,7 +35,7 @@ class Home extends React.Component{
                     </ul>
                 {/* </div> */}
             </nav>
-                        <li className="hamburger hidden-by-default">
+                        <li className="hamburger_hidden_by_default">
                             <img 
                             onClick={this.toggle}
                             src="https://img.icons8.com/plasticine/2x/menu.png"
@@ -43,9 +43,15 @@ class Home extends React.Component{
                             className="hamburgerButton"/>
                         </li>
                         <div className={`${this.state.menuOpenStatus} hidden-by-default`}>
+                            <Link className="loginHome" to="/login">
                             <h1>Login</h1>
+                            </Link>
+                            <Link className="aboutHome" to="/about">
                             <h1>About</h1>
+                            </Link>
+                            <Link className="toursHome" to="/login">
                             <h1>Tours</h1>
+                            </Link>
                         </div>
         <div className="titles">
             

@@ -1,30 +1,50 @@
 .hamburgerButton, .side-menu {
-    display: block;
+    display: none;
     z-index: 1;
     position: fixed
 
 }
 
+@mixin border{
+    border-radius: 20px 20px;
+}
+@mixin menuLinkStyle{
+    text-decoration: none;
+    color:white;
+    cursor: pointer;
+    font-size: 4ch;
+    margin-left:10px;
+    padding: 60px;
+    font-family: 'Ramabhadra', sans-serif;
+    &:hover{
+      color: rgb(245, 245, 144);
+    }
+}
+
 div.side-menu, .side-menu-open, .side-menu-close  {
     width:40vw;
-    height: 60vh;
-    background: rgb(53, 58, 63);
+    height: 40vh;
+    background:rgb(230, 227, 227);
     position: fixed;
     top: 0;
     left: 0;
     box-shadow: 3px 3px 3px 2px rgb(37, 41, 44);
     transform: translateX(-610px);
+    @include border();
 }
 .side-menu-open {
     display: block;
     animation-name: open;
     animation-duration: .6s;
     animation-fill-mode: forwards;
-    animation-timing-function: linear;
+    animation-timing-function: ease;
 }
 .side-menu-close {
     display: block;
-    animation: close .6s forwards linear ;
+    animation: close 1s forwards ease ;
+}
+.loginHome, .toursHome, .aboutHome{
+    @include menuLinkStyle();
 }
 @keyframes open {
     from{
@@ -44,11 +64,15 @@ div.side-menu, .side-menu-open, .side-menu-close  {
 }
 .hamburgerButton {
     width: 50px;
-    margin-left:94vw;
     cursor: pointer;
 }
+.hamburger_hidden_by_default{
+    display:flex;
+    justify-content: flex-end;
+  }
+
 @media (max-width: 1258px) {
-    li {
+    ul {
         display: none;
     }
     .navBar{
@@ -56,6 +80,13 @@ div.side-menu, .side-menu-open, .side-menu-close  {
     }
     .hamburgerButton {
         display: block;
-        z-index: 1;
+        // z-index: 1;
     }
+}
+@media (max-width: 525px){
+    .welcome{
+        text-align: center;
+        margin-top:25vh;
+    }
+
 }

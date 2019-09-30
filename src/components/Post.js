@@ -1,6 +1,7 @@
 import React from "react";
 import axios from 'axios';
 import StripeCheckout from "react-stripe-checkout";
+import Stripe from "./Stripe";
 
 class Post extends React.Component{
     constructor(props) {
@@ -49,8 +50,8 @@ class Post extends React.Component{
                     this.state.editStatus === false ?
                     <>
                     <h1>{this.props.postTitle}</h1>
-                    <h2>{this.props.postComment}</h2>
                     <img className="picture1" src={this.props.url}/>
+                    <h2>{this.props.postComment}</h2>
                     {/* <img className="picture2"src={this.props.picture2}/>
                     <img className="picture3"src={this.props.picture3}/> */}
                     </>
@@ -88,12 +89,13 @@ class Post extends React.Component{
                 :
                 null
             }
-            <StripeCheckout
-            stripeKey="	
-            pk_test_c0sl7Djy53INcIUsidMLNTSD00TGAbhMKU"
-            // token={handleToken}
-            
-             />
+            {
+                this.props.onGuideProfile === false ?
+                
+             <Stripe />
+             :
+              null
+            } 
             </div>
         )
     }

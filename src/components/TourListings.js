@@ -19,6 +19,9 @@ class TourListings extends React.Component {
         this.setState({posts: posts})
     }
     render() {
+        let sortedArr = this.state.posts.sort((a, b) => {
+            return a.id - b.id;
+        });
         return (
             <>
             <h1>Tokyo Tours</h1>
@@ -28,7 +31,6 @@ class TourListings extends React.Component {
                 postTitle={val.title}
                 postComment={val.comment}
                 update={this.update}
-
                 url={val.picture1}
                 onGuideProfile={false} />
             })}
