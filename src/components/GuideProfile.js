@@ -12,7 +12,7 @@ class GuideProfile extends React.Component {
     this.state ={
         postTitle: "",
         postComment: "",
-        picture1:"",
+        url:"",
         picture2:"",
         picture3:"",
         previousTours: [],
@@ -37,7 +37,7 @@ class GuideProfile extends React.Component {
         axios.post("/api/post", {
             postTitle: this.state.postTitle,
             postComment: this.state.postComment,
-            picture1: this.state.picture1,
+            url: this.state.url,
             picture2: this.state.picture2,
             picture3: this.state.picture3,
             userId: this.props.reducer.id
@@ -53,6 +53,13 @@ class GuideProfile extends React.Component {
                 .catch(err => console.log(err))
         
     }
+    checkUploadResult = (error,resultEvent) => {
+        if (resultEvent.event === "success") {
+            console.log("Picture uploaded successfully")
+            console.log(resultEvent.info.url);
+            this.setState({url: resultEvent.info.url});
+        }
+    };
 
     render(){
         let sortedArr = this.state.previousTours.sort((a, b) => {
@@ -61,6 +68,16 @@ class GuideProfile extends React.Component {
         if(this.state.redirect === true){
             return <Redirect to ="/"/>
         }
+        // cloudinary stuff dawg
+        const widget = window.cloudinary.createUploadWidget(
+            {
+            cloudName: "tokyo-tours",
+            uploadPreset: "dqfttusm",
+            sources: ["local", "url", "dropbox", "facebook", "instagram"]
+            },
+            (error, result) => {
+            this.checkUploadResult(error, result);
+            });
     return (
         <>
         <div className="guideHeader"></div>
@@ -71,15 +88,16 @@ class GuideProfile extends React.Component {
         onChange={e => this.setState({postTitle: e.target.value})} />
         <textarea className="info" placeholder="Tour information"
         onChange={e => this.setState({postComment: e.target.value})}></textarea>
-        <input placeholder="Image"
+        {/* <input placeholder="Image"
         className="pic1"
-        onChange={e => this.setState({picture1: e.target.value})} />
-        <input placeholder="Image"
+        onChange={e => this.setState({picture1: e.target.value})} /> */}
+        {/* <input placeholder="Image"
         className="pic2"
         onChange={e => this.setState({picture2: e.target.value})} />
         <input placeholder="Image"
         className="pic3"
-        onChange={e => this.setState({picture3: e.target.value})} />
+        onChange={e => this.setState({picture3: e.target.value})} /> */}
+        <button onClick ={() =>widget.open()}>Add A Picture</button>
         <button onClick ={this.handleClick}>Post Tour</button>
         <button onClick={this.logout}>Logout</button>
         </div>
@@ -90,7 +108,7 @@ class GuideProfile extends React.Component {
                 <>
                 <Post key={post.id} postTitle={post.title}
                 postComment={post.info} 
-                picture1={post.picture1}
+                url={post.picture1}
                 picture2={post.picture2}
                 picture3={post.picture3}
                 userId={this.props.reducer.id}

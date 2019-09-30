@@ -1,12 +1,24 @@
 import React from "react";
 import {Link} from "react-router-dom"
 
-function Home(props) {
+class Home extends React.Component{
+    constructor(){
+        super()
+        this.state={
+            menuOpenStatus: "side-menu"
+        }
+    }
+    toggle = () => {
+        console.log("toggle");
+        if (this.state.menuOpenStatus === "side-menu-close" || this.state.menuOpenStatus === "side-menu"){
+            this.setState({menuOpenStatus: "side-menu-open"});
+        } else if (this.state.menuOpenStatus === "side-menu-open"){
+            this.setState({menuOpenStatus: "side-menu-close"})
+        }
+    }
+    render(){
     return (
         <main className ="Home">
-            <div>
-                
-                </div>
         <div>
             <nav className="navBar">
                 {/* <div> */}
@@ -23,6 +35,18 @@ function Home(props) {
                     </ul>
                 {/* </div> */}
             </nav>
+                        <li className="hamburger hidden-by-default">
+                            <img 
+                            onClick={this.toggle}
+                            src="https://img.icons8.com/plasticine/2x/menu.png"
+                            alt="hamburger_button"
+                            className="hamburgerButton"/>
+                        </li>
+                        <div className={`${this.state.menuOpenStatus} hidden-by-default`}>
+                            <h1>Login</h1>
+                            <h1>About</h1>
+                            <h1>Tours</h1>
+                        </div>
         <div className="titles">
             
             <h2 className="welcome">Welcome To</h2>
@@ -35,6 +59,6 @@ function Home(props) {
         </div>
         </main>
     )
-}
+}}
 
 export default Home;

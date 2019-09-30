@@ -1,0 +1,61 @@
+.hamburgerButton, .side-menu {
+    display: block;
+    z-index: 1;
+    position: fixed
+
+}
+
+div.side-menu, .side-menu-open, .side-menu-close  {
+    width:40vw;
+    height: 60vh;
+    background: rgb(53, 58, 63);
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 3px 3px 3px 2px rgb(37, 41, 44);
+    transform: translateX(-610px);
+}
+.side-menu-open {
+    display: block;
+    animation-name: open;
+    animation-duration: .6s;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+}
+.side-menu-close {
+    display: block;
+    animation: close .6s forwards linear ;
+}
+@keyframes open {
+    from{
+        transform: translateX(98vw);
+    }
+    to {
+        transform: translateX(80vw);
+    }
+}
+@keyframes close {
+    from {
+        transform: translateX(80vw)
+    }
+    to {
+        transform: translateX(200vw);
+    }
+}
+.hamburgerButton {
+    width: 50px;
+    margin-left:94vw;
+    cursor: pointer;
+}
+@media (max-width: 1258px) {
+    li {
+        display: none;
+    }
+    .navBar{
+        display:none;
+    }
+    .hamburgerButton {
+        display: block;
+        z-index: 1;
+    }
+}

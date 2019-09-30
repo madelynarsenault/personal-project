@@ -1,5 +1,6 @@
 import React from "react";
 import axios from 'axios';
+import StripeCheckout from "react-stripe-checkout";
 
 class Post extends React.Component{
     constructor(props) {
@@ -30,10 +31,15 @@ class Post extends React.Component{
         })
     }
     handleDelete = () => {
-        axios.delete(`api/post/${this.props.id}`).then(response => {
+        axios.delete(`/api/post/${this.props.id}`).then(response => {
             this.props.updateTours(response.data);
         })
     }
+    handleToken = (token, addresses) => {
+        console.log({token, addresses})
+
+    }
+    
     render(){
         console.log(this.state.editStatus, this.props.onGuideProfile)
         return (
@@ -44,9 +50,9 @@ class Post extends React.Component{
                     <>
                     <h1>{this.props.postTitle}</h1>
                     <h2>{this.props.postComment}</h2>
-                    <img className="picture1" src={this.props.picture1}/>
-                    <img className="picture2"src={this.props.picture2}/>
-                    <img className="picture3"src={this.props.picture3}/>
+                    <img className="picture1" src={this.props.url}/>
+                    {/* <img className="picture2"src={this.props.picture2}/>
+                    <img className="picture3"src={this.props.picture3}/> */}
                     </>
                     :
                     <>
@@ -71,7 +77,7 @@ class Post extends React.Component{
                         Edit Tour
                     </button> 
                   :
-                   <button onClick={this.handleClick}>
+                  <button onClick={this.handleClick}>
                        Save
                    </button> 
                 }
@@ -81,7 +87,13 @@ class Post extends React.Component{
                 </>
                 :
                 null
-                }
+            }
+            <StripeCheckout
+            stripeKey="	
+            pk_test_c0sl7Djy53INcIUsidMLNTSD00TGAbhMKU"
+            // token={handleToken}
+            
+             />
             </div>
         )
     }

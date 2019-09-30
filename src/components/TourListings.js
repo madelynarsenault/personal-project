@@ -28,6 +28,8 @@ class TourListings extends React.Component {
                 postTitle={val.title}
                 postComment={val.comment}
                 update={this.update}
+
+                url={val.picture1}
                 onGuideProfile={false} />
             })}
             </>

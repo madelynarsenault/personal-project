@@ -1,10 +1,9 @@
 function addTour(req, res) {
-    const {postComment, postTitle, picture1, picture2, picture3 } = req.body;
+    const {postComment, postTitle, url, picture2, picture3 } = req.body;
     const db = req.app.get('db');
-    console.log("tc:5", req.session.user)
     db.getUsernameId(req.session.user.username).then(id => {
         let user_id = id[0].id
-        db.addTour(postComment, postTitle, picture1, picture2, picture3, user_id).then((response) => {
+        db.addTour(postComment, postTitle, url, picture2, picture3, user_id).then((response) => {
             res.status(200).json(response)
         })
     })
@@ -50,6 +49,7 @@ function deletePost (req, res) {
     db.deletePost(id).then(() => {
         console.log(req.session.user.username)
         db.getPreviousTours(req.session.user.username).then(posts => {
+            console.log(posts);
             res.status(200).json(posts)
         })
     })
