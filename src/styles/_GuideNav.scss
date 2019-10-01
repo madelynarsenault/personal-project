@@ -6,13 +6,13 @@
     font-family: 'M PLUS 1p', sans-serif;
   }
   @mixin borderColor{
-      border-color: rgb(13, 133, 111);
-      border-width:2px;
+      // border-color: rgba(9, 65, 31, 0.79);
+      // border-width:2px;
       border-style: solid;
   }
 
 .navBarGuide{
-    background-color:rgb(255, 255, 255);
+    background-color:transparent;
     height:43px;
     width:279px;
     display:flex;
@@ -32,13 +32,13 @@
     display:flex;
     justify-content: space-around;
     width:20vw;
-    font-size: 2.3ch;
+    font-size: 2.5ch;
     @include fontStyle();
     margin-right:15px;
   }
   .aboutLinkGuide, .loginLinkGuide, .tourLinkGuide{
     text-decoration: none;
-    color:rgb(0, 0, 0);
+    color:rgb(255, 255, 255);
     cursor: pointer;
     &:hover{
       color: rgb(245, 245, 144);
