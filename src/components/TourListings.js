@@ -29,7 +29,7 @@ class TourListings extends React.Component {
                 return <Post
                 key={i}
                 postTitle={val.title}
-                postComment={val.comment}
+                postComment={val.info}
                 update={this.update}
                 url={val.picture1}
                 onGuideProfile={false} />

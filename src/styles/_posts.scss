@@ -3,41 +3,48 @@
     border-style: solid;
    
     border-radius: 10px 10px;
-    box-shadow:5px 5px  rgb(92, 91, 91);
+    box-shadow:5px 5px  rgb(157, 155, 155);
+
+}
+@mixin createPostBorder{
+    border-radius: 5px 5px;
 
 }
 
 .posts{
     @include border();
     width:30vw;
-    height: 80vh;
+    height: 70vh;
     display:flex;
     flex-direction: column;
     align-items: center;
     margin-top: 10px;
     background-color: rgba(12, 121, 101, 0.961);
+    border-color: whitesmoke;
+    border-width: 2px;
     
 }
 
-.postTourGuide{
-    width: 100vw;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+.postTourGuide, .createTour{
+    margin: 1.5vw;
 }
 
 .createTour{
     display:flex;
-    height:50vh;
-    width:40vw;
+    width:30vw;
+    height:67.5vh;
     flex-direction: column;
     align-items: center;
     @include border();
-    
+    // margin-top:30px;
+    padding-top: 30px;
+    font-family: 'Montserrat Alternates', sans-serif;
+    border-color:  rgba(12, 121, 101, 0.961);
+    border-width: 2px;
 }
 
 .guideHeader{
-    background-color:rgb(220, 220, 220);
+    background-color:rgb(255, 255, 255);
     height:70px;
 }
 
@@ -47,9 +54,30 @@
     
 }
 
-.title, .info, .pic1, .pic2, .pic3{
-    height:4vh;
+.title, .info{
+    height:6vh;
     width: 20vw;
     margin-top:15px;
-    
+    @include createPostBorder();
+    text-align: center;
+    font-size: 2ch;
+    font-family: 'Varela Round', sans-serif;
+    background-color:  rgba(255, 255, 255, 0.947);
+}
+.postDiv1{
+    display:flex;
+    flex-wrap: wrap;
+    // margin-left:5vw;
+    width: 100vw;
+    // justify-content: space-around;
+}
+
+.addTour, .addPic, .logoutButton{
+    margin-top: 5vh;
+    height:40px;
+    width:11vw;
+    @include createPostBorder();
+    color:white;
+   background-color: rgba(12, 121, 101, 0.961);
+   font-family: 'Varela Round', sans-serif;
 }

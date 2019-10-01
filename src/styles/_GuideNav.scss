@@ -1,3 +1,7 @@
+@mixin tokyoStyle{
+  color:white;
+  font-family: 'Merienda', cursive;
+}
 @mixin fontStyle{
     font-family: 'M PLUS 1p', sans-serif;
   }
@@ -15,7 +19,7 @@
     justify-content: flex-end;
     align-items: center;
     margin-right: 15px;
-    top:1vw;
+    top:1.5vw;
     border-radius: 5px 5px;
     position: relative;
     
@@ -30,6 +34,7 @@
     width:20vw;
     font-size: 2.3ch;
     @include fontStyle();
+    margin-right:15px;
   }
   .aboutLinkGuide, .loginLinkGuide, .tourLinkGuide{
     text-decoration: none;
@@ -47,6 +52,17 @@
 }
   .guideGold{
       width:20vw;
-      height:16vh;
+      height:10.5vh;
       transform: rotate(1deg);
+      position: absolute;
+      top:0px;
+  }
+  .guideTokyo{
+    z-index: 1;
+    position: relative;
+    top:33px;
+    display: flex;
+    margin-left:40px;
+    font-size: 4ch;
+    @include tokyoStyle();
   }

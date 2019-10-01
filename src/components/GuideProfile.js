@@ -81,62 +81,68 @@ class GuideProfile extends React.Component {
             });
     return (
         <>
-        <div className="guideHeader">
-            <div className="guideDiv">
-            <img className="guideGold" src="https://res.cloudinary.com/tokyo-tours/image/upload/v1569944490/PNGIX.com_paint-brush-stroke-png_26857_uquxaa.png"/>
-        <nav className="navBarGuide">
-                    <ul className="listBarGuide">
-                        <Link className="loginLinkGuide"to="/">
-                        <li>Home</li>
-                        </Link>
-                        <Link className="aboutLinkGuide"to="/about">
-                        <li>About</li>
-                        </Link>
-                        <Link className="tourLinkGuide" to="/tours">
-                        <li>Tours</li>
-                        </Link>
-                    </ul>
-            </nav>
+            <div className="guideHeader">
+                
+                <div className="guideDiv">
+                <div>
+                    <h1 className="guideTokyo">Tokyo Tours</h1>
+                <img className="guideGold" src="https://res.cloudinary.com/tokyo-tours/image/upload/v1569944490/PNGIX.com_paint-brush-stroke-png_26857_uquxaa.png"/>
+                </div>
+            <nav className="navBarGuide">
+                        <ul className="listBarGuide">
+                            <Link className="loginLinkGuide"to="/">
+                            <li>Home</li>
+                            </Link>
+                            <Link className="aboutLinkGuide"to="/about">
+                            <li>About</li>
+                            </Link>
+                            <Link className="tourLinkGuide" to="/tours">
+                            <li>Tours</li>
+                            </Link>
+                        </ul>
+                </nav>
+                </div>
             </div>
-        </div>
-            <div className="createTour">
-        <h1>Create a Tour</h1>
-        <input placeholder="Tour Title"
-        className="title"
-        onChange={e => this.setState({postTitle: e.target.value})} />
-        <textarea className="info" placeholder="Tour information"
-        onChange={e => this.setState({postComment: e.target.value})}></textarea>
-        {/* <input placeholder="Image"
-        className="pic1"
-        onChange={e => this.setState({picture1: e.target.value})} /> */}
-        {/* <input placeholder="Image"
-        className="pic2"
-        onChange={e => this.setState({picture2: e.target.value})} />
-        <input placeholder="Image"
-        className="pic3"
-        onChange={e => this.setState({picture3: e.target.value})} /> */}
-        <button onClick ={() =>widget.open()}>Add A Picture</button>
-        <button onClick ={this.handleClick}>Post Tour</button>
-        <button onClick={this.logout}>Logout</button>
-        </div>
-        <div className="postTourGuide">
-        {this.state.previousTours.map(post => {
-            console.log(this.props.reducer)
-            return(
-                <>
-                <Post key={post.id} postTitle={post.title}
-                postComment={post.info} 
-                url={post.picture1}
-                picture2={post.picture2}
-                picture3={post.picture3}
-                userId={this.props.reducer.id}
-                onGuideProfile={true}
-                id={post.id}
-                updateTours={this.updateTours}/>
-                   </>
-                  )
-              })}
-            </div>
+            <section className="postDiv1">
+                <div className="createTour">
+                    <h1>Create a Tour</h1>
+                    <input placeholder="Tour Title"
+                    className="title"
+                    onChange={e => this.setState({postTitle: e.target.value})} />
+                    <textarea className="info" placeholder="Tour information"
+                    onChange={e => this.setState({postComment: e.target.value})}></textarea>
+                    {/* <input placeholder="Image"
+                    className="pic1"
+                    onChange={e => this.setState({picture1: e.target.value})} /> */}
+                    {/* <input placeholder="Image"
+                    className="pic2"
+                    onChange={e => this.setState({picture2: e.target.value})} />
+                    <input placeholder="Image"
+                    className="pic3"
+                    onChange={e => this.setState({picture3: e.target.value})} /> */}
+                    <button className="addPic"onClick ={() =>widget.open()}>Add A Picture</button>
+                    <button className ="addTour"onClick ={this.handleClick}>Post Tour</button>
+                    <button className="logoutButton" onClick={this.logout}>Logout</button>
+                </div>
+                {/* <div> */}
+                    {this.state.previousTours.map(post => {
+                        console.log(this.props.reducer)
+                        return(
+                            <main className="postTourGuide">
+                            <Post key={post.id} postTitle={post.title}
+                            postComment={post.info} 
+                            url={post.picture1}
+                            picture2={post.picture2}
+                            picture3={post.picture3}
+                            userId={this.props.reducer.id}
+                            onGuideProfile={true}
+                            id={post.id}
+                            updateTours={this.updateTours}/>
+                            </main>
+                            )
+                        })}
+                {/* </div> */}
+                </section>
         </>
     )
   }
