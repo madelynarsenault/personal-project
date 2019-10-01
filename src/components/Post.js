@@ -49,9 +49,11 @@ class Post extends React.Component{
                 {
                     this.state.editStatus === false ?
                     <>
-                    <h1>{this.props.postTitle}</h1>
+                    <h1 className="postTitle1">{this.props.postTitle}</h1>
                     <img className="picture1" src={this.props.url}/>
-                    <h2>{this.props.postComment}</h2>
+                    <div className="commentBox">
+                    <h2 className="postComment1">{this.props.postComment}</h2>
+                    </div>
                     {/* <img className="picture2"src={this.props.picture2}/>
                     <img className="picture3"src={this.props.picture3}/> */}
                     </>
@@ -74,7 +76,7 @@ class Post extends React.Component{
                     this.props.onGuideProfile === true ?
                     <>
                     {this.state.editStatus === false ?
-                    <button onClick={() => this.setState({editStatus: true})}>
+                    <button  className="editTourButton"onClick={() => this.setState({editStatus: true})}>
                         Edit Tour
                     </button> 
                   :
@@ -82,7 +84,7 @@ class Post extends React.Component{
                        Save
                    </button> 
                 }
-                <button onClick={this.handleDelete}>
+                <button className="deleteButton" onClick={this.handleDelete}>
                     delete
                 </button>
                 </>

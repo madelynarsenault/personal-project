@@ -43,6 +43,8 @@ class GuideProfile extends React.Component {
             picture3: this.state.picture3,
             userId: this.props.reducer.id
         }).then( () => {
+            this.setState({postTitle: ""})
+            this.setState({postComment: ""});
             this.grabPosts();
         })
     }
@@ -107,7 +109,7 @@ class GuideProfile extends React.Component {
                 <div className="createTour">
                     <h1>Create a Tour</h1>
                     <input placeholder="Tour Title"
-                    className="title"
+                    className="title" value={this.state.postTitle}
                     onChange={e => this.setState({postTitle: e.target.value})} />
                     <textarea className="info" placeholder="Tour information"
                     onChange={e => this.setState({postComment: e.target.value})}></textarea>

@@ -14,7 +14,7 @@
 .posts{
     @include border();
     width:30vw;
-    height: 70vh;
+    height: 88vh;
     display:flex;
     flex-direction: column;
     align-items: center;
@@ -32,11 +32,11 @@
 .createTour{
     display:flex;
     width:30vw;
-    height:67.5vh;
+    height:84vh;
     flex-direction: column;
     align-items: center;
     @include border();
-    // margin-top:30px;
+    margin-top:34px;
     padding-top: 30px;
     font-family: 'Montserrat Alternates', sans-serif;
     border-color:  rgba(12, 121, 101, 0.961);
@@ -49,8 +49,8 @@
 }
 
 .picture1, .picture2, .picture3{
-    width: 20vw;
-    height: 20vh;
+    width: 25vw;
+    height: 25vh;
     
 }
 
@@ -80,4 +80,39 @@
     color:white;
    background-color: rgba(12, 121, 101, 0.961);
    font-family: 'Varela Round', sans-serif;
+}
+
+.commentBox{
+    border-style: solid;
+    border-color:rgb(53, 50, 50);
+    background-color: white;
+    height:40vh;
+    width: 25vw;
+    border-width: 2px;
+    margin-top: 25px;
+    border-radius: 8px 8px;
+}
+
+.editTourButton, .deleteButton{
+    @include createPostBorder();
+    margin-top: 2vh;
+    height:40px;
+    width:11vw;
+    color:black;
+   background-color:white;
+   font-family: 'Varela Round', sans-serif;
+}
+.postTitle1{
+    color:white;
+    font-size: 4.5ch;
+    font-family: 'Domine', serif;
+}
+.postComment1{
+    font-size: 2.5ch;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    overflow: scroll;
+    height:40vh;
+
+
 }

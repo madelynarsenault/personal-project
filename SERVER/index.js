@@ -8,7 +8,7 @@ const {registerUser, loginUser, logOut} = require("./CONTROLLERS/authController"
 const {addTour, fetchPastTours, getAllTours, editTour, deletePost} = require("./CONTROLLERS/tourController");
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY
 const stripePublicKey = process.env.STRIPE_PUBLIC_KEY
-console.log( stripePublicKey, stripeSecretKey);
+
 
 const app = express();
 app.set('view engine', 'ejs')
