@@ -19,7 +19,8 @@ class Home extends React.Component{
     render(){
     return (
         <main className ="Home">
-        <div>
+        <div className="homeDiv">
+            <div className="homeDiv2">
             <nav className="navBar">
                 {/* <div> */}
                     <ul className="listBar">
@@ -35,6 +36,7 @@ class Home extends React.Component{
                     </ul>
                 {/* </div> */}
             </nav>
+            </div>
                         <li className="hamburger_hidden_by_default">
                             <img 
                             onClick={this.toggle}

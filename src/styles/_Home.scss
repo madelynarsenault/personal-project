@@ -51,6 +51,7 @@ $primaryText : whitesmoke;
     display:flex;
     flex-direction: column;
     align-items: center;
+    
   /* height: 100vh; */
   justify-content: space-evenly;
     /* margin-top: 40px; */
@@ -62,11 +63,16 @@ $primaryText : whitesmoke;
     display:flex;
     justify-content: flex-end;
     align-items: center;
-    margin-left:78vw;
-    border-radius: 20px 20px;
+    // margin-left:78vw;
+    border-radius: 5px 5px;
     position: relative;
     top:1vw;
+    margin-right:12px;
 
+  }
+  .homeDiv2{
+    display: flex;
+    justify-content: flex-end;
   }
   .listBar{
     color:white;

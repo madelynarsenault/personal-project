@@ -4,6 +4,7 @@ import Post from "./Post";
 import { connect } from "react-redux";
 import {Redirect} from "react-router-dom";
 import {updateUser} from "../redux/userReducer"
+import {Link} from "react-router-dom";
 
 
 class GuideProfile extends React.Component {
@@ -80,7 +81,24 @@ class GuideProfile extends React.Component {
             });
     return (
         <>
-        <div className="guideHeader"></div>
+        <div className="guideHeader">
+            <div className="guideDiv">
+            <img className="guideGold" src="https://res.cloudinary.com/tokyo-tours/image/upload/v1569944490/PNGIX.com_paint-brush-stroke-png_26857_uquxaa.png"/>
+        <nav className="navBarGuide">
+                    <ul className="listBarGuide">
+                        <Link className="loginLinkGuide"to="/">
+                        <li>Home</li>
+                        </Link>
+                        <Link className="aboutLinkGuide"to="/about">
+                        <li>About</li>
+                        </Link>
+                        <Link className="tourLinkGuide" to="/tours">
+                        <li>Tours</li>
+                        </Link>
+                    </ul>
+            </nav>
+            </div>
+        </div>
             <div className="createTour">
         <h1>Create a Tour</h1>
         <input placeholder="Tour Title"
