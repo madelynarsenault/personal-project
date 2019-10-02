@@ -47,12 +47,12 @@ class TourListings extends React.Component {
                             <li>Tours</li>
                             </Link>
                             {
-                            this.props.is_guide === true ?
+                            this.props.user.isGuide === true ?
                             <Link className="profileLinkTour" to="/guide">
                             <li>Profile</li>
                             </Link>
                             :
-                            this.props.isGuide === false ?
+                            this.props.user.isGuide === false ?
                             <Link className="profileLinkTour" to="/user">
                             <li>Profile</li>
                             </Link>
@@ -82,7 +82,7 @@ class TourListings extends React.Component {
 
 function mapStateToProps(reduxState){
     return{
-        reducer: reduxState.user
+        user: reduxState.user
     }
 }
 

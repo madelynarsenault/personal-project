@@ -6,7 +6,7 @@ $primaryText : whitesmoke;
 
 
 .findButton{
-    background-color:rgba(9, 65, 31, 0.79);
+    background-color:rgba(9, 65, 31, 0.892);
     padding: 16px 50px;
     border-radius: 12px;
     border-color: transparent;
@@ -91,6 +91,12 @@ $primaryText : whitesmoke;
       color: rgb(245, 245, 144);
     }
 
+  }
+  .homeFooter{
+    background-color: white;
+    height:70px;
+    width: 100vw;
+    margin-top:35vh;
   }
   
   @media (max-width: 958px){

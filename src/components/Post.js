@@ -64,12 +64,12 @@ class Post extends React.Component{
                     <textarea onChange ={(e) => this.setState({textArea: e.target.value})}
                     defaultValue={this.props.postComment}>
                     </textarea>
-                    <input onChange={e => this.setState({picture1: e.target.value})}
-                    defaultValue={this.props.picture1}/>
-                    <input onChange={e => this.setState({picture2: e.target.value})}
+                    {/* <input onChange={e => this.setState({picture1: e.target.value})}
+                    defaultValue={this.props.url}/> */}
+                    {/* <input onChange={e => this.setState({picture2: e.target.value})}
                     defaultValue={this.props.picture2} />
                     <input onChange={e => this.setState({picture3: e.target.value})}
-                    defaultValue={this.props.picture3} />
+                    defaultValue={this.props.picture3} /> */}
                     </>
                 }
                 {

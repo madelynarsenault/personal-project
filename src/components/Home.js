@@ -65,8 +65,22 @@ class Home extends React.Component{
                     </Link>
         </div>
         </div>
+        <div className="homeFooter">
+            <ul>
+                <li>madelyn.arsenault@gmail.com</li>
+                <li>'(406)-830-9655'</li>
+                <Link to="https://github.com/madelynarsenault">
+                <li>GitHub</li>
+                </Link>
+                <Link to="https://www.linkedin.com/in/madelyn-arsenault-7a2197152/">
+                <li>LinkedIn</li>
+                </Link>
+            </ul>
+        </div>
         </main>
     )
+
+
 }}
 
 export default Home;
