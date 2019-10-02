@@ -2,6 +2,7 @@ import React from "react";
 import axios from 'axios';
 import StripeCheckout from "react-stripe-checkout";
 import Stripe from "./Stripe";
+import TourButton from './TourButton';
 
 class Post extends React.Component{
     constructor(props) {
@@ -93,8 +94,15 @@ class Post extends React.Component{
             }
             {
                 this.props.onGuideProfile === false ?
-                
+               <div>
              <Stripe />
+             {
+                 this.props.onGuideProfile === false ?
+                 <TourButton />
+                 :
+                 null
+             }
+                </div> 
              :
               null
             } 
