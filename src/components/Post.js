@@ -10,7 +10,7 @@ class Post extends React.Component{
             editStatus: false,
             textField: this.props.postTitle,
             textArea: this.props.postComment,
-            picture1: this.props.picture1,
+            picture1: this.props.url,
             picture2: this.props.picture2,
             picture3: this.props.picture3
         }
@@ -64,8 +64,8 @@ class Post extends React.Component{
                     <textarea onChange ={(e) => this.setState({textArea: e.target.value})}
                     defaultValue={this.props.postComment}>
                     </textarea>
-                    {/* <input onChange={e => this.setState({picture1: e.target.value})}
-                    defaultValue={this.props.url}/> */}
+                    <input onChange={e => this.setState({picture1: e.target.value})}
+                    defaultValue={this.props.url}/>
                     {/* <input onChange={e => this.setState({picture2: e.target.value})}
                     defaultValue={this.props.picture2} />
                     <input onChange={e => this.setState({picture3: e.target.value})}

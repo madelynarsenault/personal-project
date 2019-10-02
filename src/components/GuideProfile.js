@@ -111,7 +111,7 @@ class GuideProfile extends React.Component {
                     <input placeholder="Tour Title"
                     className="title" value={this.state.postTitle}
                     onChange={e => this.setState({postTitle: e.target.value})} />
-                    <textarea className="info" placeholder="Tour information"
+                    <textarea className="info" value={this.state.postComment} placeholder="Tour information"
                     onChange={e => this.setState({postComment: e.target.value})}></textarea>
                     {/* <input placeholder="Image"
                     className="pic1"
