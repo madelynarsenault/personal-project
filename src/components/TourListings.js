@@ -65,13 +65,14 @@ class TourListings extends React.Component {
             </div>
             <div className="tourPosts">
             {this.state.posts.map((val, i) => {
-                
+                console.log(this.props.user.id)
                 return <Post
                 key={i}
                 postTitle={val.title}
                 postComment={val.info}
                 update={this.update}
                 url={val.picture1}
+                id={val.id}
                 onGuideProfile={false} />
             })}
             </div>

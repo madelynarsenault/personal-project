@@ -4,6 +4,8 @@ const massive = require('massive');
 const session = require('express-session');
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
 const stripe = require("stripe")(stripeSecretKey);
+const uuid = require('uuid/v4')
+var cors = require('cors')
 
 const {registerUser, loginUser, logOut} = require("./CONTROLLERS/authController");
 const {addTour, fetchPastTours, getAllTours, editTour, deletePost} = require("./CONTROLLERS/tourController");
@@ -13,7 +15,7 @@ const stripePublicKey = process.env.STRIPE_PUBLIC_KEY
 const app = express();
 app.set('view engine', 'ejs')
 app.use(express.json());
-// app.use(cors());
+app.use(cors());
 
 massive(process.env.CONNECTION_STRING).then(dbInstance => {
     app.set("db", dbInstance);
