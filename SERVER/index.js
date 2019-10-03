@@ -9,6 +9,7 @@ var cors = require('cors')
 
 const {registerUser, loginUser, logOut} = require("./CONTROLLERS/authController");
 const {addTour, fetchPastTours, getAllTours, editTour, deletePost} = require("./CONTROLLERS/tourController");
+const {addPurchasedTour} = require('./CONTROLLERS/purchasesController');
 const stripePublicKey = process.env.STRIPE_PUBLIC_KEY
 
 
@@ -40,7 +41,6 @@ app.post("/checkout", async (req, res) => {
     let status;
     try {
       const { product, token } = req.body;
-  
       const customer = await stripe.customers.create({
         email: token.email,
         source: token.id
@@ -93,6 +93,7 @@ app.get('/api/guide/posts', fetchPastTours)
 app.get("/api/posts", getAllTours)
 app.put("/api/post/:id", editTour)
 app.delete("/api/post/:id", deletePost)
+app.post('/api/purchased', addPurchasedTour)
 
 
 

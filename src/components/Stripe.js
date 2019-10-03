@@ -3,19 +3,20 @@ import ReactDOM from 'react-dom';
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
 import {toast} from 'react-toastify';
+import {connect} from 'react-redux';
+import {updateUser} from "../redux/userReducer"
 
 toast.configure()
 
 function Stripe(){
     const [product] = React.useState({
-        tourId: 187,
         name: "Tokyo Tours",
         price: 123.76
     });
 
    async function handleToken (token, addresses){
         // console.log({token, addresses})
-      const response = await axios.post("/checkout", {
+      const response = await axios.post("/api/checkout", {
             token,
             product
         })
@@ -24,7 +25,7 @@ function Stripe(){
             toast('Success! Check your email for details on your tour',
             { type: 'success' })
             // post sending listing_id and user_id to db
-            axios.post('/api/checkedout', {token})
+            axios.post('/api/purchased', {product})
         } else {
             toast('Something went wrong, please check your credit card number',
             {type: 'error'})
@@ -42,6 +43,13 @@ function Stripe(){
        
     )
 }
+function mapStateToProps(reduxState){
+    return{
+        user:reduxState.user
+    }
+}
 
 
-export default Stripe;
+export default connect(mapStateToProps,{
+    updateUser
+})(Stripe);

@@ -1,13 +1,23 @@
 import React from "react";
 import axios from 'axios';
 import {Link} from "react-router-dom";
+import {updateUser} from "../redux/userReducer";
+import {connect} from "react-redux";
 
 class UserLanding extends React.Component {
     constructor(){
         super()
         this.state ={
-
+            purchasedTours: []
         }
+    }
+    componentDidMount(){
+        this.grabPurchased();
+    }
+    grabPurchased = () => {
+        return axios.get('/api/users/purchased').then(response => {
+            this.setState({purchasedTours: response.data})
+        })
     }
     render(){
         return(
@@ -36,5 +46,12 @@ class UserLanding extends React.Component {
         )
     }
 }
+function mapStateToProps(reduxState){
+    return{
+        user: reduxState.user
+    }
+}
 
-export default UserLanding;
+export default connect(mapStateToProps, {
+    updateUser
+})(UserLanding);
