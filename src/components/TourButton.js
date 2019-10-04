@@ -19,9 +19,9 @@ class TourButton extends React.Component{
     }
     render(){
         return(
-            <input type="checkbox" name="tourCheck" />
+            // <input type="checkbox" name="tourCheck" />
             
-            
+            <h1></h1>
         )
     }
 }

@@ -11,8 +11,18 @@ class TourListings extends React.Component {
     constructor(){
     super()
     this.state ={
-        posts: []
-    }}
+            posts: [],
+            menuOpenStatus: "side-menu"
+        }
+    }
+    toggle = () => {
+        console.log("toggle");
+        if (this.state.menuOpenStatus === "side-menu-close" || this.state.menuOpenStatus === "side-menu"){
+            this.setState({menuOpenStatus: "side-menu-open"});
+        } else if (this.state.menuOpenStatus === "side-menu-open"){
+            this.setState({menuOpenStatus: "side-menu-close"})
+        }
+    }
     componentDidMount(){
         axios.get("/api/posts").then(response => {
             this.setState({posts: response.data})
@@ -60,6 +70,24 @@ class TourListings extends React.Component {
                             null
                             }
                         </ul>
+            <li className="hamburger_hidden_by_default">
+                            <img 
+                            onClick={this.toggle}
+                            src="https://img.icons8.com/plasticine/2x/menu.png"
+                            alt="hamburger_button"
+                            className="hammyButton"/>
+                        </li>
+                        <div className={`${this.state.menuOpenStatus} hidden-by-default`}>
+                            <Link className="loginHome" to="/login">
+                            <h1>Login</h1>
+                            </Link>
+                            <Link className="aboutHome" to="/about">
+                            <h1>About</h1>
+                            </Link>
+                            <Link className="toursHome" to="/login">
+                            <h1>Tours</h1>
+                            </Link>
+                            </div>
                 </nav>
                 </div>
             </div>

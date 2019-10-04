@@ -34,7 +34,7 @@ app.use(session ({
 
 
 
-app.post("/checkout", async (req, res) => {
+app.post("/api/checkout", async (req, res) => {
     console.log("Request:", req.body);
   
     let error;
