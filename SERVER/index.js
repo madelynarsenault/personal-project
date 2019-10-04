@@ -9,7 +9,7 @@ var cors = require('cors')
 
 const {registerUser, loginUser, logOut} = require("./CONTROLLERS/authController");
 const {addTour, fetchPastTours, getAllTours, editTour, deletePost} = require("./CONTROLLERS/tourController");
-const {addPurchasedTour} = require('./CONTROLLERS/purchasesController');
+const {addPurchasedTour, getPurchasedTour} = require('./CONTROLLERS/purchasesController');
 const stripePublicKey = process.env.STRIPE_PUBLIC_KEY
 
 
@@ -94,6 +94,7 @@ app.get("/api/posts", getAllTours)
 app.put("/api/post/:id", editTour)
 app.delete("/api/post/:id", deletePost)
 app.post('/api/purchased', addPurchasedTour)
+app.get("/api/users/purchased", getPurchasedTour)
 
 
 

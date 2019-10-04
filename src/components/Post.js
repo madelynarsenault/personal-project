@@ -3,6 +3,8 @@ import axios from 'axios';
 import StripeCheckout from "react-stripe-checkout";
 import Stripe from "./Stripe";
 import TourButton from './TourButton';
+import {updateUser} from "../redux/userReducer";
+import {connect} from "react-redux";
 
 class Post extends React.Component{
     constructor(props) {
@@ -43,6 +45,7 @@ class Post extends React.Component{
     }
     
     render(){
+        console.log(this.props);
         console.log(this.state.editStatus, this.props.onGuideProfile)
         return (
             <div className="posts"> 
@@ -95,7 +98,9 @@ class Post extends React.Component{
             {
                 this.props.onGuideProfile === false ?
                <div>
-             <Stripe />
+             <Stripe listing_id={this.props.id}
+             user_id={this.props.user.userId}
+             />
              {
                  this.props.onGuideProfile === false ?
                  <TourButton />
@@ -111,4 +116,12 @@ class Post extends React.Component{
     }
 }
 
-export default Post;
+function mapStateToProps(reduxState){
+    return{
+        user: reduxState.user
+    }
+}
+
+export default connect(mapStateToProps, {
+    updateUser
+})(Post);

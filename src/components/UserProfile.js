@@ -3,6 +3,7 @@ import axios from 'axios';
 import {Link} from "react-router-dom";
 import {updateUser} from "../redux/userReducer";
 import {connect} from "react-redux";
+import Post from "./Post";
 
 class UserLanding extends React.Component {
     constructor(){
@@ -15,11 +16,13 @@ class UserLanding extends React.Component {
         this.grabPurchased();
     }
     grabPurchased = () => {
-        return axios.get('/api/users/purchased').then(response => {
+         axios.get('/api/users/purchased').then(response => {
             this.setState({purchasedTours: response.data})
+            console.log(response.data)
         })
     }
     render(){
+        console.log(this.state.purchasedTours);
         return(
             <div className="guideHeader">
                 
@@ -42,7 +45,24 @@ class UserLanding extends React.Component {
                         </ul>
                 </nav>
                 </div>
+                {this.state.purchasedTours.map(post => {
+                    console.log(this.props.reducer)
+                    console.log(post)
+                    return(
+                        <main className="postTourGuide">
+                        <Post key={post.id} postTitle={post.title}
+                        postComment={post.info} 
+                        url={post.picture1}
+                        picture2={post.picture2}
+                        picture3={post.picture3}
+                        onGuideProfile={true}
+                        id={post.id}
+                        updateTours={this.updateTours}/>
+                        </main>
+                        )
+                    })}
             </div>
+            
         )
     }
 }
