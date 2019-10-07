@@ -6,6 +6,7 @@ const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
 const stripe = require("stripe")(stripeSecretKey);
 const uuid = require('uuid/v4')
 var cors = require('cors')
+const path = require('path');
 const {SERVER_PORT} = process.env
 const {registerUser, loginUser, logOut} = require("./CONTROLLERS/authController");
 const {addTour, fetchPastTours, getAllTours, editTour, deletePost} = require("./CONTROLLERS/tourController");
@@ -17,6 +18,8 @@ const app = express();
 app.set('view engine', 'ejs')
 app.use(express.json());
 app.use(cors());
+app.use( express.static( `${__dirname}/../build` ) );
+
 
 massive(process.env.CONNECTION_STRING).then(dbInstance => {
     app.set("db", dbInstance);
@@ -79,6 +82,9 @@ app.post("/api/checkout", async (req, res) => {
     res.json({ error, status });
   });
 
+  app.get('*', (req, res)=>{
+    res.sendFile(path.join(__dirname, '../build/index.html'));
+});
 
 
 
@@ -95,6 +101,8 @@ app.put("/api/post/:id", editTour)
 app.delete("/api/post/:id", deletePost)
 app.post('/api/purchased', addPurchasedTour)
 app.get("/api/users/purchased", getPurchasedTour)
+
+
 
 
 
