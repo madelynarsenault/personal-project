@@ -15,10 +15,10 @@ const stripePublicKey = process.env.STRIPE_PUBLIC_KEY
 
 
 const app = express();
+app.use( express.static( `${__dirname}/../build` ) );
 app.set('view engine', 'ejs')
 app.use(express.json());
 app.use(cors());
-app.use( express.static( `${__dirname}/../build` ) );
 
 
 massive(process.env.CONNECTION_STRING).then(dbInstance => {
@@ -82,9 +82,7 @@ app.post("/api/checkout", async (req, res) => {
     res.json({ error, status });
   });
 
-  app.get('*', (req, res)=>{
-    res.sendFile(path.join(__dirname, '../build/index.html'));
-});
+ 
 
 
 
@@ -104,6 +102,8 @@ app.get("/api/users/purchased", getPurchasedTour)
 
 
 
-
+app.get('*', (req, res)=>{
+  res.sendFile(path.join(__dirname, '../build/index.html'));
+});
 
 app.listen(SERVER_PORT, () => console.log(`listening on ${SERVER_PORT}`));
