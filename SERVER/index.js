@@ -6,7 +6,7 @@ const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
 const stripe = require("stripe")(stripeSecretKey);
 const uuid = require('uuid/v4')
 var cors = require('cors')
-
+const {SERVER_PORT} = process.env
 const {registerUser, loginUser, logOut} = require("./CONTROLLERS/authController");
 const {addTour, fetchPastTours, getAllTours, editTour, deletePost} = require("./CONTROLLERS/tourController");
 const {addPurchasedTour, getPurchasedTour} = require('./CONTROLLERS/purchasesController');
@@ -98,4 +98,4 @@ app.get("/api/users/purchased", getPurchasedTour)
 
 
 
-app.listen(5050, () => console.log(`listening on port 5050`));
+app.listen(SERVER_PORT, () => console.log(`listening on ${SERVER_PORT}`));
