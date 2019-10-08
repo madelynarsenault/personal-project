@@ -1,4 +1,4 @@
-.hammyButton, .side-menu {
+.hammyButton2, .side-menu {
     display: none;
     z-index: 1;
     position: fixed
@@ -43,7 +43,7 @@ div.side-menu, .side-menu-open, .side-menu-close  {
     display: block;
     animation: close 1s forwards ease ;
 }
-.loginHome, .toursHome, .aboutHome, .profileLinkTourBar{
+.guideLinkHome, .guideLinkAbout, .guideLinkTour{
     @include menuLinkStyle();
 }
 @keyframes open {
@@ -62,7 +62,7 @@ div.side-menu, .side-menu-open, .side-menu-close  {
         transform: translateX(200vw);
     }
 }
-.hammyButton {
+.hammyButton2 {
     width: 50px;
     cursor: pointer;
 }
@@ -78,7 +78,7 @@ div.side-menu, .side-menu-open, .side-menu-close  {
     .navBar{
         display:none;
     }
-    .hammyButton {
+    .hammyButton2 {
         display: block;
        
         // z-index: 1;

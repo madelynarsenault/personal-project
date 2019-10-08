@@ -119,3 +119,21 @@
 
 
 }
+
+@media(max-width:450px){
+    .createTour{
+        display:flex;
+        width:90vw;
+        height:60vh;
+        margin-left:20px;
+    }
+    .posts{
+        margin-left:20px;
+    }
+    .title, .info{
+        width:65vw;
+    }
+    .addTour, .addPic, .logoutButton, .editTourButton, .deleteButton{
+        width:30vw;
+    }
+}

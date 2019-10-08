@@ -9,7 +9,8 @@ class UserLanding extends React.Component {
     constructor(){
         super()
         this.state ={
-            purchasedTours: []
+            purchasedTours: [],
+            menuOpenStatus: "side-menu"
         }
     }
     componentDidMount(){
@@ -20,6 +21,14 @@ class UserLanding extends React.Component {
             this.setState({purchasedTours: response.data})
             console.log(response.data)
         })
+    }
+    toggle = () => {
+        console.log("toggle");
+        if (this.state.menuOpenStatus === "side-menu-close" || this.state.menuOpenStatus === "side-menu"){
+            this.setState({menuOpenStatus: "side-menu-open"});
+        } else if (this.state.menuOpenStatus === "side-menu-open"){
+            this.setState({menuOpenStatus: "side-menu-close"})
+        }
     }
     render(){
         console.log(this.state.purchasedTours);
@@ -43,13 +52,31 @@ class UserLanding extends React.Component {
                             <li>Tours</li>
                             </Link>
                         </ul>
+                        <li className="hamburger_hidden_by_default">
+                            <img 
+                            onClick={this.toggle}
+                            src="https://img.icons8.com/plasticine/2x/menu.png"
+                            alt="hamburger_button"
+                            className="hammyButton2"/>
+                        </li>
+                        <div className={`${this.state.menuOpenStatus} hidden-by-default`}>
+                            <Link className="guideLinkHome" to="/">
+                            <h1>Home</h1>
+                            </Link>
+                            <Link className="guideLinkAbout" to="/about">
+                            <h1>About</h1>
+                            </Link>
+                            <Link className="guideLinkTour" to="/tours">
+                            <h1>Tours</h1>
+                            </Link>
+                            </div>
                 </nav>
                 </div>
                 {this.state.purchasedTours.map(post => {
                     console.log(this.props.reducer)
                     console.log(post)
                     return(
-                        <main className="postTourGuide">
+                        <div className="postTourUserPage">
                         <Post key={post.id} postTitle={post.title}
                         postComment={post.info} 
                         url={post.picture1}
@@ -58,12 +85,13 @@ class UserLanding extends React.Component {
                         onGuideProfile={true}
                         id={post.id}
                         updateTours={this.updateTours}/>
-                        </main>
+                        </div>
                         )
                     })}
             </div>
             
         )
+                        
     }
 }
 function mapStateToProps(reduxState){

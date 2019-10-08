@@ -66,15 +66,15 @@ class Home extends React.Component{
         </div>
         </div>
         <div className="homeFooter">
-            <ul>
-                <li>madelyn.arsenault@gmail.com</li>
-                <li>'(406)-830-9655'</li>
-                <Link to="https://github.com/madelynarsenault">
+            <ul className="footer1">
+                <li className="homepageEmail">madelyn.arsenault@gmail.com</li>
+                <li className="phoneNumber">(406)-830-9655</li>
+                <a href="https://github.com/madelynarsenault" target="_blank" className="gitHub">
                 <li>GitHub</li>
-                </Link>
-                <Link to="https://www.linkedin.com/in/madelyn-arsenault-7a2197152/">
+                </a>
+                <a href="https://www.linkedin.com/in/madelyn-arsenault-7a2197152/" target="_blank" className="linkedIn">
                 <li>LinkedIn</li>
-                </Link>
+                </a>
             </ul>
         </div>
         </main>

@@ -1,8 +1,33 @@
-.homeFooter{
+@mixin hover {
+    &:hover{
+        color: rgb(36, 138, 63);
+        cursor: pointer;
+    }
+}
+
+
+.footer1{
     display:flex;
     align-content: center;
     justify-content: center;
-    // justify-content: space-around;
-    // flex-direction: row;
+    justify-content: space-around;
+    position: relative;
+    top:15px;
+    font-size: 2.5ch;
+    font-family: 'Overlock', cursive;
+}
+
+.linkedIn, .gitHub{
+    text-decoration: none;
+    color:black;
+    @include hover();
+}
+ .phoneNumber, .homepageEmail{
+    @include hover();
+}
+@media (max-width: 1471px){
+    .homeFooter{
+    display:none;
+    }
 }
 

@@ -17,7 +17,16 @@ class GuideProfile extends React.Component {
         picture2:"",
         picture3:"",
         previousTours: [],
-        redirect: false
+        redirect: false,
+        menuOpenStatus: "side-menu"
+    }
+}
+toggle = () => {
+    console.log("toggle");
+    if (this.state.menuOpenStatus === "side-menu-close" || this.state.menuOpenStatus === "side-menu"){
+        this.setState({menuOpenStatus: "side-menu-open"});
+    } else if (this.state.menuOpenStatus === "side-menu-open"){
+        this.setState({menuOpenStatus: "side-menu-close"})
     }
 }
     componentDidMount(){
@@ -83,7 +92,7 @@ class GuideProfile extends React.Component {
             });
     return (
         <>
-            <div className="guideHeader">
+             <div className="guideHeader">
                 
                 <div className="guideDiv">
                 <div>
@@ -92,16 +101,34 @@ class GuideProfile extends React.Component {
                 </div>
             <nav className="navBarGuide">
                         <ul className="listBarGuide">
-                            <Link className="loginLinkGuide"to="/">
+                            <Link className="loginLinkTour"to="/">
                             <li>Home</li>
                             </Link>
-                            <Link className="aboutLinkGuide"to="/about">
+                            <Link className="aboutLinkTour"to="/about">
                             <li>About</li>
                             </Link>
-                            <Link className="tourLinkGuide" to="/tours">
+                            <Link className="tourLinkTour" to="/tours">
                             <li>Tours</li>
                             </Link>
                         </ul>
+            <li className="hamburger_hidden_by_default">
+                            <img 
+                            onClick={this.toggle}
+                            src="https://img.icons8.com/plasticine/2x/menu.png"
+                            alt="hamburger_button"
+                            className="hammyButton2"/>
+                        </li>
+                        <div className={`${this.state.menuOpenStatus} hidden-by-default`}>
+                            <Link className="guideLinkHome" to="/">
+                            <h1>Home</h1>
+                            </Link>
+                            <Link className="guideLinkAbout" to="/about">
+                            <h1>About</h1>
+                            </Link>
+                            <Link className="guideLinkTour" to="/tours">
+                            <h1>Tours</h1>
+                            </Link>
+                            </div>
                 </nav>
                 </div>
             </div>

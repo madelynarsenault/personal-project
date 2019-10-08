@@ -1,43 +1,26 @@
 import React from "react";
-import axios from 'axios';
-import Post from "./Post";
 import {Link} from "react-router-dom";
 import {updateUser} from "../redux/userReducer";
-import {connect} from 'react-redux';
+import {connect} from "react-redux";
 
 
-
-class TourListings extends React.Component {
-    constructor(){
-    super()
-    this.state ={
-            posts: [],
-            menuOpenStatus: "side-menu"
+class About extends React.Component{
+        constructor(){
+            super()
+            this.state ={
+                menuOpenStatus: "side-menu"
+            }
         }
-    }
-    toggle = () => {
-        console.log("toggle");
-        if (this.state.menuOpenStatus === "side-menu-close" || this.state.menuOpenStatus === "side-menu"){
-            this.setState({menuOpenStatus: "side-menu-open"});
-        } else if (this.state.menuOpenStatus === "side-menu-open"){
-            this.setState({menuOpenStatus: "side-menu-close"})
-        }
-    }
-    componentDidMount(){
-        axios.get("/api/posts").then(response => {
-            this.setState({posts: response.data})
-        })
-    }
-    update =(posts)=> {
-        this.setState({posts: posts})
-    }
-    render() {
-        let sortedArr = this.state.posts.sort((a, b) => {
-            return a.id - b.id;
-        });
-        console.log(this.props)
-        return (
-            <>
+        toggle = () => {
+            console.log("toggle");
+            if (this.state.menuOpenStatus === "side-menu-close" || this.state.menuOpenStatus === "side-menu"){
+                this.setState({menuOpenStatus: "side-menu-open"});
+            } else if (this.state.menuOpenStatus === "side-menu-open"){
+                this.setState({menuOpenStatus: "side-menu-close"})
+            }}
+        render(){
+        return(
+            <section className="section2">
             <div className="guideHeader">
                 
                 <div className="guideDiv">
@@ -49,9 +32,6 @@ class TourListings extends React.Component {
                         <ul className="listBarGuide">
                             <Link className="loginLinkTour"to="/">
                             <li>Home</li>
-                            </Link>
-                            <Link className="aboutLinkTour"to="/about">
-                            <li>About</li>
                             </Link>
                             <Link className="tourLinkTour" to="/tours">
                             <li>Tours</li>
@@ -75,7 +55,7 @@ class TourListings extends React.Component {
                             onClick={this.toggle}
                             src="https://img.icons8.com/plasticine/2x/menu.png"
                             alt="hamburger_button"
-                            className="hammyButton"/>
+                            className="hammyButton2"/>
                         </li>
                         <div className={`${this.state.menuOpenStatus} hidden-by-default`}>
                             <Link className="loginHome" to="/">
@@ -100,31 +80,42 @@ class TourListings extends React.Component {
                             </div>
                 </nav>
                 </div>
-            </div>
-            <div className="tourPosts">
-            {this.state.posts.map((val, i) => {
-                console.log(this.props.user.id)
-                return <Post
-                key={i}
-                postTitle={val.title}
-                postComment={val.info}
-                update={this.update}
-                url={val.picture1}
-                id={val.id}
-                onGuideProfile={false} />
-            })}
-            </div>
-            </>
-        )
+                </div>
+                <div className="aboutTitle">
+                    <h1>Who Are We?</h1>
+                </div>
+                <div className="aboutCommentDiv">
+                    <h2 className="aboutComment">At Tokyo Tours our commitment is to excel in customer service 
+                        and client satisfaction.  The city of Tokyo is a vast and 
+                        amazing metropolis full of side streets and ally ways,
+                         main thoroughfares and secret destinations and because of 
+                         that, we aim to provide you with all the cities delights without 
+                         the hassle.  At Tokyo Tours we will take care of the details while 
+                         you sit back and experience Tokyo like a native. 
+                    </h2>
+                </div>
+                <div className="aboutFooter">
+                   <h1 className="clickHere"> What are you waiting for? Click 
+                       <Link className="loginAboutPage" to="/login">
+                       <h1 className="here2">here</h1>
+                       </Link>
+                       <h1 className="adventure">to being your adventure.</h1>
+                       </h1>
+                    </div>
+                </section>
+                
+                )
+        }
+     
     }
-}
+    
 
-function mapStateToProps(reduxState){
-    return{
-        user: reduxState.user
-    }
-}
-
-export default connect(mapStateToProps, {
-    updateUser
-})(TourListings);
+        function mapStateToProps(reduxState){
+            return{
+                user: reduxState.user
+            }
+        }
+        
+        export default connect(mapStateToProps, {
+            updateUser
+        })(About);

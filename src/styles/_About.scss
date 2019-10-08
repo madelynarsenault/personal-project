@@ -1,0 +1,58 @@
+.aboutTitle{
+    font-size: 12ch;
+    margin-left: 29vw;
+    font-family: 'Elsie', cursive;
+    color:rgb(82, 125, 94);
+}
+
+.aboutComment{
+    display:flex;
+    text-align: center;
+    font-size: 4.5ch;
+    justify-content: center;
+    font-family: 'Overlock', cursive;
+    color: rgb(62, 59, 59);
+    line-height: 2.7ch;
+
+}
+
+.aboutCommentDiv{
+    display: flex;
+    margin-top: 30px;
+    border-color: rgb(82, 125, 94);
+    border-radius: 9px 9px;;
+    border-style: solid;
+    border-width: 3px;
+    width:55vw;
+    height:40vh;
+    margin-left:20vw;
+    overflow: scroll;
+}
+.section2{
+    height:100vh;
+}
+.aboutFooter{
+    display:flex;
+    margin-top:10vh;
+    font-size: 5ch
+
+}
+.clickHere{
+    display:flex;
+    justify-content: center;
+    align-content: center;
+    margin-left:6vw;
+}
+.here2, .adventure{
+    margin-left:10px;
+
+}
+.clickHere, .adventure, .here2{
+    font-family: 'Comfortaa', cursive;
+    color:rgb(82, 125, 94)
+}
+.here2{
+    text-decoration: none!important;
+    color:rgb(40, 96, 65);
+
+}
