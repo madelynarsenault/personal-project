@@ -56,3 +56,25 @@
     color:rgb(40, 96, 65);
 
 }
+
+@media (max-width:400px){
+    .aboutTitle{
+        font-size: 6ch;
+        display: inline;
+        position: relative;
+        left:50px;
+    }
+    .aboutFooter{
+       font-size:3ch
+    }
+    .aboutCommentDiv{
+        width:80vw;
+       position: relative;
+       right:38px;
+       font-size:1.5ch;
+    }
+    .aboutFooter{
+        font-size:2.2ch;
+        
+    }
+}

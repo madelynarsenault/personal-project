@@ -27,7 +27,7 @@ function Stripe(props){
         const { status } = response.data
         if (status === "success") {
             console.log('hit on Stripe')
-            toast('Success! Check your email for details on your tour',
+            toast('Congratulations, head back to your profile to view your tour',
             { type: 'success' })
             // post sending listing_id and user_id to db
             orderTour()

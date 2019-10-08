@@ -3,6 +3,7 @@ import axios from 'axios';
 import {Link} from "react-router-dom";
 import {updateUser} from "../redux/userReducer";
 import {connect} from "react-redux";
+import {Redirect} from "react-router-dom";
 import Post from "./Post";
 
 class UserLanding extends React.Component {
@@ -10,11 +11,17 @@ class UserLanding extends React.Component {
         super()
         this.state ={
             purchasedTours: [],
-            menuOpenStatus: "side-menu"
+            menuOpenStatus: "side-menu",
+            redirect:false
         }
     }
     componentDidMount(){
         this.grabPurchased();
+    }
+    componentDidUpdate (prevProps){
+        if(prevProps.purchasedTours !== this.state.purchasedTours){
+            this.grabPurchased();
+        }
     }
     grabPurchased = () => {
          axios.get('/api/users/purchased').then(response => {
@@ -23,15 +30,25 @@ class UserLanding extends React.Component {
         })
     }
     toggle = () => {
-        console.log("toggle");
+        
         if (this.state.menuOpenStatus === "side-menu-close" || this.state.menuOpenStatus === "side-menu"){
             this.setState({menuOpenStatus: "side-menu-open"});
         } else if (this.state.menuOpenStatus === "side-menu-open"){
             this.setState({menuOpenStatus: "side-menu-close"})
         }
     }
+    logout=()=> {
+        axios.get('/auth/logout').then(() => {
+            this.props.updateUser({})
+            this.setState({redirect: true})
+        })
+        .catch(err => console.log(err))
+
+}
     render(){
-        console.log(this.state.purchasedTours);
+        if(this.state.redirect === true){
+            return <Redirect to ="/"/>
+        }
         return(
             <div className="guideHeader">
                 
@@ -51,6 +68,7 @@ class UserLanding extends React.Component {
                             <Link className="tourLinkTour" to="/tours">
                             <li>Tours</li>
                             </Link>
+                            <button className="logoutButtonUser" onClick={this.logout}>Logout</button>
                         </ul>
                         <li className="hamburger_hidden_by_default">
                             <img 
@@ -72,12 +90,13 @@ class UserLanding extends React.Component {
                             </div>
                 </nav>
                 </div>
+                <div className="appearBelow">
+                    <h1>Your purchased tours will appear below!</h1>
+                </div>
+                <div className="postTourUserPage">
                 {this.state.purchasedTours.map(post => {
-                    console.log(this.props.reducer)
-                    console.log(post)
                     return(
-                        <div className="postTourUserPage">
-                        <Post key={post.id} postTitle={post.title}
+                        <Post className="userProfilePost" key={post.id} postTitle={post.title}
                         postComment={post.info} 
                         url={post.picture1}
                         picture2={post.picture2}
@@ -85,9 +104,9 @@ class UserLanding extends React.Component {
                         onGuideProfile={true}
                         id={post.id}
                         updateTours={this.updateTours}/>
-                        </div>
                         )
                     })}
+                    </div>
             </div>
             
         )

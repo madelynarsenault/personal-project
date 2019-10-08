@@ -3,3 +3,56 @@
     justify-items: column;
     width:400vw;
 }
+.tourPosts{
+    display:flex;
+    justify-content: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin-top:5vh;
+    
+}
+
+.aboutLinkTour, .loginLinkTour, .tourLinkTour, .profileLinkTour{
+    text-decoration: none;
+    color:rgb(255, 255, 255);
+    cursor: pointer;
+    &:hover{
+      color: rgb(245, 245, 144);
+    }
+
+  }
+
+
+  @media (max-width:492px){
+    .tourPosts{
+      display:flex;
+      align-items: center;
+      flex-direction: column;
+    }
+    div.posts{
+      width:90vw;
+    }
+    .picture1{
+      width:80vw;
+    }
+    .commentBox{
+      width:78vw;
+    }
+    .aboutLinkTour, .loginLinkTour, .tourLinkTour, .profileLinkTour{
+      display:none;
+    }
+    img.guideGold{
+      width:55vw;
+    }
+    .guideTokyo{
+      width:48vw;
+      font-size:3ch;
+      right:10px;
+    }
+  }
+  @media(max-width:1259px){
+    .listBarGuide{
+      display:none;
+  }
+}
+  
