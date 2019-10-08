@@ -11,15 +11,18 @@ module.exports ={
                 const salt = bcrypt.genSaltSync(12)
                 bcrypt.hash(password, salt).then(hash => {
                     db.registerUsers(firstName, lastName, email, isGuide, username, hash).then(() => {
-                        req.session.user ={
-                            username,
-                            firstName,
-                            lastName,
-                            email,
-                            isGuide,
-                            
-                        }
-                        res.status(200).json(req.session.user);
+                        db.getPassword(username).then(user => {
+                            console.log(user)
+                            req.session.user ={
+                                username,
+                                firstName,
+                                lastName,
+                                email,
+                                isGuide,
+                                id: user[0].id
+                            }
+                            res.status(200).json(req.session.user);
+                        })
                     })
                 })
             } else {

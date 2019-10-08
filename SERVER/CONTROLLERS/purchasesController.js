@@ -1,10 +1,10 @@
 function addPurchasedTour(req,res){
-    const {user_id, listing_id} = req.body;
-    // const {user_id} = req.session
-    console.log(user_id)
+    const {listing_id} = req.body;
+    const {id} = req.session.user
+    console.log(id)
     console.log('pc3:', req.body);
     const db = req.app.get('db');
-    db.addPurchase(user_id, listing_id).then((response) => {
+    db.addPurchase(id, listing_id).then((response) => {
         res.status(200).json(response)
     })
 }
