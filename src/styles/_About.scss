@@ -1,6 +1,6 @@
 .aboutTitle{
-    font-size: 12ch;
-    margin-left: 29vw;
+    font-size: 9ch;
+    margin-left: 35.5vw;
     font-family: 'Elsie', cursive;
     color:rgb(82, 125, 94);
 }
@@ -8,12 +8,23 @@
 .aboutComment{
     display:flex;
     text-align: center;
-    font-size: 4.5ch;
+    font-size: 3ch;
     justify-content: center;
-    font-family: 'Overlock', cursive;
+    font-family: 'Be Vietnam', sans-serif;
     color: rgb(62, 59, 59);
     line-height: 2.7ch;
 
+}
+.aboutImage{
+    display:flex;
+}
+.about1, .about2, .about3{
+    height: 30vh;
+    width: 30vw;
+    left:67px;
+    position: relative;
+    margin-top: 15px;
+    margin-left:4px;
 }
 
 .aboutCommentDiv{
@@ -23,8 +34,8 @@
     border-radius: 9px 9px;;
     border-style: solid;
     border-width: 3px;
-    width:55vw;
-    height:40vh;
+    width:60vw;
+    height:30vh;
     margin-left:20vw;
     overflow: scroll;
 }
@@ -42,6 +53,8 @@
     justify-content: center;
     align-content: center;
     margin-left:6vw;
+    position: relative;
+    bottom:30px;
 }
 .here2, .adventure{
     margin-left:10px;

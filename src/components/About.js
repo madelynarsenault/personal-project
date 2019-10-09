@@ -94,6 +94,11 @@ class About extends React.Component{
                          you sit back and experience Tokyo like a native. 
                     </h2>
                 </div>
+                <div className="aboutImage">
+                    <img src="https://naritadogfight.files.wordpress.com/2014/10/dsc1854-edit-edit.jpg?w=1024" className="about1"/>
+                    <img src="http://sf.co.ua/14/05/wallpaper-926219.jpg" className="about2"/>
+                    <img src="https://i.pinimg.com/originals/f4/33/41/f4334177bc2a7ceda4638d901f09656c.jpg" className="about3"/>
+                </div>
                 <div className="aboutFooter">
                    <h1 className="clickHere"> What are you waiting for? Click 
                        <Link className="loginAboutPage" to="/login">

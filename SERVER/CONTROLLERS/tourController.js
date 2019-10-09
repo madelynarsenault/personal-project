@@ -46,6 +46,7 @@ function editTour(req, res) {
 function deletePost (req, res) {
     const {id} = req.params;
     const db = req.app.get('db');
+    db.deletePostPurchase(id)
     db.deletePost(id).then(() => {
         console.log(req.session.user.username)
         db.getPreviousTours(req.session.user.username).then(posts => {

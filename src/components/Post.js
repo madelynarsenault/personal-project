@@ -94,7 +94,7 @@ class Post extends React.Component{
                 </>
                 :
                 null
-            }
+            },
             {
                 this.props.onGuideProfile === false ?
                <div>
